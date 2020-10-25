@@ -1,0 +1,22 @@
+<h2>Evan Price</h2>
+<table class="table table-striped col-md-12" id="descriptions">
+  <thead>
+  <tr>
+    <th>Header</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @descriptions.each do |movie| %>
+    <tr>
+      <td>
+        <%= movie.header %>
+      </td>
+      <td>
+        <%= movie.description %>
+      </td>
+
+    </tr>
+  <% end %>
+  </tbody>
+</table>

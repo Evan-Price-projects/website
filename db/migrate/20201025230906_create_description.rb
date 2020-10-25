@@ -1,8 +1,8 @@
 class CreateDescription < ActiveRecord::Migration
   def change
     create_table :descriptions do |t|
-      t.string 'Header'
-      t.text 'Description'
+      t.string 'header'
+      t.text 'description'
       t.timestamps
     end
   end
