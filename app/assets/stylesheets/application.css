@@ -8,7 +8,7 @@ html, body {
 }
 div#main {
     margin: 0;
-    padding: 0 20px 20px;
+    padding: 0 0 0;
 }
 a {
     background: transparent;
@@ -34,7 +34,7 @@ h1.title {
     font-style: normal;
 }
 table#descriptions {
-    margin: 10px;
+    margin: 0px;
     border-collapse: collapse;
     width: 100%;
     border-bottom: 2px solid black;
@@ -42,14 +42,14 @@ table#descriptions {
 table#descriptions th {
     border: 2px solid white;
     font-weight: bold;
-    background-color: wheat;
+    background-color: slategray;
 }
 table#descriptions th, table#descriptions td {
-    padding: 4px;
+    padding: 0;
     text-align: left;
 }
 #notice #warning {
-    background: rosybrown;
+    background: slategray;
     margin: 1em 0;
     padding: 4px;
 }
