@@ -1,6 +1,6 @@
 descriptions = [
-{:header => 'The Shawshank Redemption', :description => 'R'},
-    {:header => 'Inception', :description => '16-Jul-2010'},
+{:header => 'Skills', :info => '1'},
+    {:header => 'Experience', :info => '2'},
 ]
 
 descriptions.each do |description|
