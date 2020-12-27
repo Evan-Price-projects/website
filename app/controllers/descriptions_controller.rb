@@ -4,9 +4,14 @@ class DescriptionsController < ApplicationController
   end
 
   def show
-    id = params[:id] # retrieve description ID from URI route
-    @description = Description.find(id) # look up description by unique ID
-      # will render app/views/descriptions/show.<extension> by default
+    id = params[:id]
+    if id.include? "experience"
+      render descriptions_experience_path
+    elsif id.include? "education"
+      render descriptions_education_path
+    else
+      @description = Description.find(id)
+    end
   end
 
   def index

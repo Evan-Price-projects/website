@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :descriptions
-  root :to => redirect('/descriptions')
-  post 'descriptions/experience'
-
+  root 'descriptions#index'
+  get 'descriptions/experience'
+  get 'descriptions/education'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

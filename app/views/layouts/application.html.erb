@@ -6,8 +6,35 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<h1><a class="header" href="#index"> Evan Price</a></h1>
+<div class = 'grid-container'>
+  <header>
+    <div class="topnav">
+      <%if current_page?(root_path) %>
+        <%=link_to "Home", root_path, class: "active" %>
+        <%=link_to "Education", descriptions_education_path, :id => 'Education'%>
+      <%=link_to "Experience", descriptions_experience_path, :id => 'Experience' %>
+      <%elsif current_page?(descriptions_experience_path) %>
+        <%=link_to "Home", root_path %>
+        <%=link_to "Education", descriptions_education_path, :id => 'Education'%>
+        <%=link_to "Experience", descriptions_experience_path, :id => 'Experience', class: "active"%>
+      <%else %>
+        <%=link_to "Home", root_path %>
+        <%=link_to "Education", descriptions_education_path, :id => 'Education', class: "active"%>
+        <%=link_to "Experience", descriptions_experience_path, :id => 'Experience'%>
+      <%end %>
+      <a href="https://github.com/Evan-Price-projects">GitHub</a>
+      <a href="https://www.linkedin.com/in/evan-price-57784385/">LinkedIn</a>
+
+    </div>
+  </header>
+  <div class = "spacer1"></div>
+  <body>
 <%= yield %>
 
 </body>
+  <div class = "img">
+    <%= image_tag("final.jpg", :alt => "Evan Price IMG", :height => 325, :width => 240)%>
+  </div>
+</div>
 </html>
