@@ -40,10 +40,14 @@
         grid-row: 1;
         grid-column: span 12;
     }
+    .full2{
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 12;
+    }
     .img {
         background: lightgrey;
-        grid-row-start: 2;
-        grid-row-end: 3;
+        grid-row: 2;
         grid-column: span 4;
     }
     section {
