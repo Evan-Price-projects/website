@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'descriptions#index'
   get 'descriptions/experience'
   get 'descriptions/education'
+  get 'descriptions/skills'
+  get 'descriptions/github'
+  get 'descriptions/contactme'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

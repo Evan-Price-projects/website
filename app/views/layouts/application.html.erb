@@ -11,20 +11,26 @@
   <header>
     <div class="topnav">
       <%if current_page?(root_path) %>
-        <%=link_to "Home", root_path, class: "active" %>
-        <%=link_to "Education", descriptions_education_path, :id => 'Education'%>
-      <%=link_to "Experience", descriptions_experience_path, :id => 'Experience' %>
-      <%elsif current_page?(descriptions_experience_path) %>
-        <%=link_to "Home", root_path %>
-        <%=link_to "Education", descriptions_education_path, :id => 'Education'%>
-        <%=link_to "Experience", descriptions_experience_path, :id => 'Experience', class: "active"%>
-      <%else %>
-        <%=link_to "Home", root_path %>
-        <%=link_to "Education", descriptions_education_path, :id => 'Education', class: "active"%>
-        <%=link_to "Experience", descriptions_experience_path, :id => 'Experience'%>
+        <%root = "active" %>
+      <%elsif current_page?(descriptions_education_path)%>
+        <%edu = "active" %>
+      <%elsif current_page?(descriptions_experience_path)%>
+        <%exp = "active" %>
+      <%elsif current_page?(descriptions_skills_path)%>
+        <%skills = "active" %>
+      <%elsif current_page?(descriptions_github_path)%>
+        <%git = "active" %>
+      <%elsif current_page?(descriptions_contactme_path)%>
+        <%cme = "active" %>
       <%end %>
-      <a href="https://github.com/Evan-Price-projects">GitHub</a>
-      <a href="https://www.linkedin.com/in/evan-price-57784385/">LinkedIn</a>
+      <%=link_to "Home", root_path, class: root %>
+      <%=link_to "Education", descriptions_education_path, :id => 'Education', class: edu%>
+      <%=link_to "Experience", descriptions_experience_path, :id => 'Experience', class: exp%>
+      <%=link_to "Skills", descriptions_skills_path, :id => "Skills", class: skills%>
+      <%=link_to "Github", descriptions_github_path, :id => 'Github', class: git%>
+      <%=link_to "Contact Me", descriptions_contactme_path, :id => 'Contact', class: cme %>
+
+
 
     </div>
   </header>
