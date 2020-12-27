@@ -1,23 +1,20 @@
-<h2>Evan Price</h2>
-
-<table class="table table-striped col-md-12" id="descriptions">
-      <thead>
-  <tr>
-    <th>Header</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @descriptions.each do |movie| %>
-    <tr>
-      <td>
-        <%= movie.header %>
-      </td>
-      <td>
-        <%= movie.info%>
-      </td>
-
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<h1><a href="#index"> Evan Price</a></h1>
+<div class = 'grid-container'>
+<header>
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a >News</a>
+  <a >Contact</a>
+  <a >About</a>
+</div>
+</header>
+<section>
+  <h2>Qualifications</h2>
+</section>
+  <div class = "img">
+    <%= image_tag("final.jpg", :alt => "Evan Price IMG", :height => 206, :width => 150)%>
+  </div>
+  <footer>
+    <h3>Footer</h3>
+  </footer>
+</div>
