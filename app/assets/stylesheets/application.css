@@ -33,7 +33,7 @@
 
         grid-template-columns: repeat(12, 1fr);
 
-        grid-template-rows: 1fr 8fr 1%;
+        grid-template-rows: 1fr 8fr 1fr 1%;
     }
     header {
         background: lightgrey;
@@ -42,7 +42,8 @@
     }
     .img {
         background: lightgrey;
-        grid-row: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
         grid-column: span 4;
     }
     section {
@@ -67,9 +68,9 @@
         float: left;
         color: #f2f2f2;
         text-align: center;
-        padding: 14px 16px;
+        padding: 1% 1%;
         text-decoration: none;
-        font-size: 17px;
+        font-size: 100%;
     }
     a.education {
         font-size: 70%;
