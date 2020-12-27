@@ -6,7 +6,7 @@ class DescriptionsController < ApplicationController
   def show
     id = params[:id] # retrieve description ID from URI route
     @description = Description.find(id) # look up description by unique ID
-    # will render app/views/descriptions/show.<extension> by default
+      # will render app/views/descriptions/show.<extension> by default
   end
 
   def index
@@ -18,13 +18,6 @@ class DescriptionsController < ApplicationController
   end
 
   def create
-    if (@description = Description.create!(description_params))
-      flash[:warning] = "#{@description.title} created."
-      redirect_to descriptions_path
-    else
-      flash[:warning] = "description #{@description.title} could not be created: " +
-          @description.errors.full_messages.join(",")
-      render 'new'
-    end
+
   end
 end

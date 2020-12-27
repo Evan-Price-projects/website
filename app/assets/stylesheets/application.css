@@ -1,26 +1,39 @@
 
 @media screen {
-
+    h1 {
+        font-size: 220%;
+    }
+    h2{
+        font-size: 180%;
+    }
+    h3{
+        font-size: 135%;
+    }
+    h4{
+        font-size: 100%;
+    }
+    h5{
+        font-size: 80%
+    }
     body {
-        background: white;
+        background: grey;
     }
 
     .grid-container {
-        background: white;
+        background: grey;
         min-width: 60%;
         max-width: 80%;
-        height: 130vh;
+        height: 80vh;
 
         margin: 0 auto;
         text-align: left;
-
         flex-direction: row;
 
         display: grid;
 
         grid-template-columns: repeat(12, 1fr);
 
-        grid-template-rows: 1fr 3fr 7fr 1%;
+        grid-template-rows: 1fr 8fr 1%;
     }
     header {
         background: lightgrey;
@@ -30,21 +43,17 @@
     .img {
         background: lightgrey;
         grid-row: 2;
-        grid-column: span 1;
+        grid-column: span 4;
     }
     section {
         background: lightgrey;
         grid-row: 2;
-        grid-column: span 11;
+        grid-column: span 7;
     }
-    footer {
+    .spacer1 {
         background: lightgrey;
-        grid-row: 3;
-        grid-column: span 12;
-    }
-    input, label {
-        float: left;
-        display: inline;
+        grid-row: 2;
+        grid-column: span 1;
     }
     .topnav {
         background-color: #333;
@@ -62,7 +71,13 @@
         text-decoration: none;
         font-size: 17px;
     }
-
+    a.education {
+        font-size: 70%;
+    }
+    a.header {
+        text-decoration: lightgrey;
+        color: black;
+    }
     /* Change the color of links on hover */
     .topnav a:hover {
         background-color: #ddd;
@@ -71,7 +86,8 @@
 
     /* Add a color to the active/current link */
     .topnav a.active {
-        background-color: #4CAF50;
-        color: white;
+        background-color: gold;
+        color: black;
     }
+
 }

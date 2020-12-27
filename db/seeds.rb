@@ -1,6 +1,6 @@
 descriptions = [
 {:header => 'Skills', :info => '1'},
-    {:header => 'Experience', :info => '2'},
+    {:header => 'experience', :info => '2'},
 ]
 
 descriptions.each do |description|

@@ -1,20 +1,31 @@
-<h1><a href="#index"> Evan Price</a></h1>
+<h1><a class="header" href="#index"> Evan Price</a></h1>
 <div class = 'grid-container'>
 <header>
 <div class="topnav">
   <a class="active" href="#home">Home</a>
-  <a >News</a>
-  <a >Contact</a>
-  <a >About</a>
+  <a href="https://github.com/Evan-Price-projects">GitHub</a>
+  <a href="https://www.linkedin.com/in/evan-price-57784385/">Linked in</a>
+  <%=link_to "Experience", descriptions_experience_path, method: :post%>
+
 </div>
 </header>
+  <div class = "spacer1"></div>
 <section>
-  <h2>Qualifications</h2>
+  <h2>Education</h2>
+  <dl>
+    <dt>
+  <h3>
+    University of Iowa, Iowa City, IA
+  </h3>
+    </dt>
+  <h5>
+      <dd>B.S. Computer Science</dd>
+      <dd>Minor in Math</dd>
+      <dd>Graduated December 2020</dd>
+  </h5>
+  </dl>
 </section>
   <div class = "img">
-    <%= image_tag("final.jpg", :alt => "Evan Price IMG", :height => 206, :width => 150)%>
+    <%= image_tag("final.jpg", :alt => "Evan Price IMG", :height => 325, :width => 240)%>
   </div>
-  <footer>
-    <h3>Footer</h3>
-  </footer>
 </div>
