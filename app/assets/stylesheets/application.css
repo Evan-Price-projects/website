@@ -50,11 +50,27 @@
         background: lightgrey;
         grid-row: 2;
         grid-column: span 4;
+        width: 100%;
+        max-height: 100%;
+        overflow: auto;
+    }
+    .img1 {
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 7;
+        width: 100%;
+        max-height: 100%;
+        overflow: auto;
     }
     section {
         background: lightgrey;
         grid-row: 2;
         grid-column: span 7;
+    }
+    .Section1 {
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 4;
     }
     .spacer1 {
         background: lightgrey;
