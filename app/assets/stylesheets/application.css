@@ -88,7 +88,14 @@
         background-color: #ddd;
         color: black;
     }
-
+    .Title a{
+        text-decoration: lightgray;
+        color: black;
+        text-align: center;
+        padding: 1% 1%;
+        text-decoration: none;
+        font-size: 100%;
+    }
     /* Add a color to the active/current link */
     .topnav a.active {
         background-color: gold;

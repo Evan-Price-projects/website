@@ -6,8 +6,10 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<h1><a class="header" href="#index"> Evan Price</a></h1>
-<div class = 'grid-container'>
+<h1><div class = "Title">
+  <%=link_to "Evan Price", root_path%>
+</div></h1>
+  <div class = 'grid-container'>
   <header>
     <div class="topnav">
       <%if current_page?(root_path) %>
