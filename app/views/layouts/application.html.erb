@@ -22,6 +22,8 @@
         <%skills = "active" %>
       <%elsif current_page?(descriptions_github_path)%>
         <%git = "active" %>
+      <%elsif current_page?(descriptions_images_path(@descriptions.id))%>
+        <%git = "active" %>
 
       <%end %>
       <%=link_to "Home", root_path, class: root %>
@@ -35,8 +37,9 @@
     </div>
   </header>
   <body>
-<%= yield %>
-
+  <div class = "spacer1"></div>
+  <%= yield %>
+  <div class = "spacer1"></div>
 </body>
 </div>
 </html>
