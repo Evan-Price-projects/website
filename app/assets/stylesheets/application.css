@@ -57,6 +57,7 @@
         background: lightgrey;
         grid-row: 3;
         grid-column: span 8;
+        height: 50%
     }
     .projects_head{
         background: lightgrey;
