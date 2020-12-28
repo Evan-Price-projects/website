@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201025230906) do
+ActiveRecord::Schema.define(version: 20201228155741) do
 
   create_table "descriptions", force: :cascade do |t|
-    t.string   "header"
-    t.text     "info"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text "project_title"
+    t.text "description"
+    t.text "images"
   end
 
 end
