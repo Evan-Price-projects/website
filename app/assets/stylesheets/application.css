@@ -23,7 +23,7 @@
         background: grey;
         min-width: 60%;
         max-width: 80%;
-        height: 80vh;
+        height: 90vh;
 
         margin: 0 auto;
         text-align: left;
@@ -33,8 +33,18 @@
 
         grid-template-columns: repeat(12, 1fr);
 
-        grid-template-rows: 1fr 8fr 1fr 1%;
+        grid-template-rows: 1fr 1fr 8fr 1%;
     }
+    table {width: 100%}
+    td{
+        max-width: 0;
+        text-align: left;
+        vertical-align: top;
+    }
+    td.column_a {width: 10%; height: 33%;}
+    td.column_b {width: 25%; height: 33%;}
+    td.column_c {width: 65%; height: 33%;}
+
     header {
         background: lightgrey;
         grid-row: 1;
@@ -42,23 +52,56 @@
     }
     .full2{
         background: lightgrey;
-        grid-row: 2;
+        grid-row: 3;
         grid-column: span 12;
     }
     .img {
         background: lightgrey;
-        grid-row: 2;
+        grid-row: 3;
         grid-column: span 4;
+        width: 100%;
+        max-height: 100%;
+        overflow: auto;
+    }
+    .img1 {
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 7;
+        width: 100%;
+        max-height: 100%;
+        overflow: auto;
     }
     section {
         background: lightgrey;
-        grid-row: 2;
+        grid-row: 3;
         grid-column: span 7;
     }
+    .Section1 {
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 4;
+    }
+
     .spacer1 {
         background: lightgrey;
-        grid-row: 2;
+        grid-row: 3;
         grid-column: span 1;
+    }
+    .projects_head{
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 12;
+    }
+    .title_spot{
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 12;
+    }
+    .projects{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 12;
+        overflow: scroll;
     }
     .topnav {
         background-color: #333;
@@ -88,7 +131,14 @@
         background-color: #ddd;
         color: black;
     }
-
+    .Title a{
+        text-decoration: lightgray;
+        color: black;
+        text-align: center;
+        padding: 1% 1%;
+        text-decoration: none;
+        font-size: 100%;
+    }
     /* Add a color to the active/current link */
     .topnav a.active {
         background-color: gold;
