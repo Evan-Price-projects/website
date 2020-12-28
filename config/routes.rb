@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'descriptions/skills'
   get 'descriptions/github'
   get 'descriptions/contactme'
-  get 'descriptions/github_images'
+  get 'descriptions/images'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

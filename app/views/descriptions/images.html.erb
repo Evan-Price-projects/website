@@ -1,0 +1,20 @@
+<div class = "projects_head"><h2><%=@descriptions.project_title%></h2></div>
+<div class = "projects">
+  <table class="table table-striped col-md-12" id="github">
+    <thead>
+    <tr>
+      <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% x = @descriptions.images.split(", ") %>
+    <%x.each do |git| %>
+      <tr>
+        <td>
+          <%=image_tag(git,style:'display:block; width:100%; height:auto;')%>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

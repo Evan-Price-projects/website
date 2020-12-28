@@ -1,4 +1,3 @@
-<!--  This file is app/views/movies/index.html.erb -->
 <div class = "projects_head"><h2>Projects</h2></div>
 <div class = "projects">
 <table class="table table-striped col-md-12" id="github">
@@ -19,10 +18,7 @@
         <%= git.description %>
       </td>
       <td>
-        <% git1 = git.images.split(", ") %>
-        <% git1.each do |img|%>
-        <% end %>
-        <%=link_to "GitHub Screenshots", descriptions_github_images_path %>
+        <%=link_to "GitHub Screenshots", descriptions_images_path(git.id) %>
       </td>
       <td>
       </td>
