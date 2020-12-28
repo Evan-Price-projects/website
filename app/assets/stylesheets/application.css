@@ -35,15 +35,6 @@
 
         grid-template-rows: 1fr 1fr 8fr 1%;
     }
-    table {width: 100%}
-    td{
-        max-width: 0;
-        text-align: left;
-        vertical-align: top;
-    }
-    td.column_a {width: 10%; height: 33%;}
-    td.column_b {width: 25%; height: 33%;}
-    td.column_c {width: 65%; height: 33%;}
 
     header {
         background: lightgrey;
@@ -114,7 +105,7 @@
     /* Style the links inside the navigation bar */
     .topnav a {
         float: left;
-        color: #f2f2f2;
+        color: gold;
         text-align: center;
         padding: 1% 1%;
         text-decoration: none;
@@ -145,5 +136,22 @@
         background-color: gold;
         color: black;
     }
+    #github {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
+    #github td, #github th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #github th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #333;
+        color: gold;
+    }
 }

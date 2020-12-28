@@ -5,7 +5,7 @@ application up and running.
 
 Things you may want to cover:
 https://www.dummies.com/web-design-development/html5/how-to-open-links-in-new-windows-or-tabs-with-html5/
-
+https://www.w3schools.com/Css/tryit.asp?filename=trycss_table_fancy
 
 
 Please feel free to use a different markup language if you do not plan to run
