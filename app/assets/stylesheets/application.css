@@ -35,6 +35,7 @@
 
         grid-template-rows: 1fr 8fr 1fr 1%;
     }
+
     header {
         background: lightgrey;
         grid-row: 1;

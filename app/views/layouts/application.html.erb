@@ -20,13 +20,15 @@
         <%exp = "active" %>
       <%elsif current_page?(descriptions_skills_path)%>
         <%skills = "active" %>
-
+      <%elsif current_page?(descriptions_github_path)%>
+        <%git = "active" %>
 
       <%end %>
       <%=link_to "Home", root_path, class: root %>
       <%=link_to "Education", descriptions_education_path, :id => 'Education', class: edu%>
       <%=link_to "Experience", descriptions_experience_path, :id => 'Experience', class: exp%>
       <%=link_to "Skills", descriptions_skills_path, :id => "Skills", class: skills%>
+      <%=link_to "GitHub", descriptions_github_path, :id => "Github", class: git%>
 
 
 
