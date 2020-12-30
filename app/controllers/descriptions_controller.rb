@@ -6,6 +6,7 @@ class DescriptionsController < ApplicationController
   def show
     id = params[:id]
     format = params[:format]
+    @descriptions = Description.all
     if id.include? "experience"
       render descriptions_experience_path
     elsif id.include? "education"
@@ -15,7 +16,6 @@ class DescriptionsController < ApplicationController
     elsif id.include? "contactme"
       render descriptions_contactme_path
     elsif id.include? "github"
-      @descriptions = Description.all
       render descriptions_github_path
     elsif id.include? "images"
       @descriptions = Description.find(format)
