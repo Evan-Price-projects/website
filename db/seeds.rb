@@ -5,6 +5,18 @@ descriptions = [
 {project_title: 'Logical Programming Language',
  description: 'Created the start to logical programming language similar to prolog using the language Haskell. This language recognizes predicates, queries and commenting out things. It also solves simple one line predicate, query functions.',
  images: 'haskell1.png'},
+{project_title: 'Skills',
+ description: 'Programming Languages',
+ images: 'Java, Ruby, Python 2 and 3, R, Julia, C, HTML, CSS, PostgreSQL, SQLite, HTML.erb. HAML, Haskell'},
+{project_title: 'Skills',
+ description: 'Programming Tools',
+ images: 'Jupyter Notebook, GitHub, GitLab, Sequence Diagrams, Activity Diagrams, Use Case Diagrams, Design Documentation, ruby-on-rails, Cucumber/Capybara, Rspec, Agile, REST, Eclipse, Rubymine, Intellij, VS Code, BDD, TDD, Heroku'},
+{project_title: 'Skills',
+ description: 'Programming Classes',
+ images: 'Data Structures (Java), Algorithms (Java), Object Oriented Software Development (OOSD) (Java), Computer Organization (Assembly), Engineering Problem Solving  II  (C), Engineering Problem Solving  with R (R) , Intro to Networks and their Connections (Python 2, 3), Optimization Techniques (Julia), Software Engineering Languages and Tools(SQL, Ruby, HTML, CSS), Programming Language Concepts (Haskell)'},
+{project_title: 'Skills',
+ description: 'Non-Programming CS Classes',
+ images: 'Discrete Structures, Numerical Calculations, Statistics, Engineering Math I-V, Physics I-II, Computational Epidemiology, Logic in Computer Science'},
 ]
 descriptions.each do |description|
   Description.create!(description)

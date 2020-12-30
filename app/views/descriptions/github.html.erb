@@ -9,7 +9,7 @@
   </tr>
   </thead>
   <tbody>
-  <% @descriptions.each do |git| %>
+  <% @descriptions.where.not(project_title: "Skills").each do |git| %>
     <tr>
       <td>
         <%= git.project_title %>
@@ -19,8 +19,6 @@
       </td>
       <td>
         <%=link_to "GitHub Screenshots", descriptions_images_path(git.id) %>
-      </td>
-      <td>
       </td>
     </tr>
   <% end %>

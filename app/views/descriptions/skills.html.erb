@@ -1,50 +1,24 @@
-<div class = "projects_head"><h2>Skills</h2></div>
-<div class = "full2">
-  <dl>
-    <dt>
-      <h3>
-        Programming Languages </h3>
-    </dt>
-    <h5>
-      <dd>Java, Ruby, Python 2 and 3</dd>
-      <dd>R, Julia, C, HTML, CSS, PostgreSQL</dd>
-      <dd>SQLite, HTML.erb. HAML, Haskell</dd>
-    </h5>
-  </dl>
-  <dl>
-    <dt>
-      <h3>
-        Programming Tools</h3>
-    </dt>
-    <h5>
-      <dd>Jupyter Notebook, GitHub, GitLab</dd>
-      <dd>Sequence Diagrams, Activity Diagrams, Use Case Diagrams, Design Documentation</dd>
-      <dd>ruby-on-rails, Cucumber/Capybara, Rspec, Agile, REST</dd>
-      <dd>Eclipse, Rubymine, Intellij, VS Code, BDD, TDD, Heroku</dd>
-    </h5>
-  </dl>
-  <dl>
-    <dt>
-      <h3>
-        Programming Classes</h3>
-    </dt>
-    <h5>
-      <dd>Data Structures (Java), Algorithms (Java), Object Oriented Software Development (OOSD) (Java)</dd>
-      <dd>Computer Organization (Assembly), Engineering Problem Solving  II  (C)</dd>
-      <dd>Engineering Problem Solving  with R (R) , Intro to Networks and their Connections (Python 2, 3)</dd>
-      <dd> Optimization Techniques (Julia), Software Engineering Languages and Tools(Ruby, Sql, HTML, CSS)</dd>
-      <dd>Programming Language Concepts (Haskell)</dd>
-    </h5>
-  </dl>
-  </dl>
-  <dl>
-    <dt>
-      <h3>
-        Non-Programming CS Classes</h3>
-    </dt>
-    <h5>
-      <dd>Discrete Structures, Numerical Calculations, Statistics, Engineering Math I-V</dd>
-      <dd>Physics I-II, Computational Epidemiology, Logic in Computer Science</dd>
-    </h5>
-  </dl>
+<div class = "projects_head"><h2>Projects</h2></div>
+<div class = "projects">
+  <table id="github">
+    <thead>
+    <tr>
+      <th>Skill/Class</th>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @descriptions.where(project_title: "Skills").each do |skill| %>
+      <tr>
+        <td>
+          <%= skill.description %>
+        </td>
+        <td>
+          <%= skill.images %>
+        </td>
+
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </div>
