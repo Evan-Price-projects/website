@@ -4,7 +4,7 @@ descriptions = [
  images: '1.png, 2.png, 3.png, 4.png, 5.png, 6.png'},
 {project_title: 'Logical Programming Language',
  description: 'Created the start to logical programming language similar to prolog using the language Haskell. This language recognizes predicates, queries and commenting out things. It also solves simple one line predicate, query functions.',
- images: 'haskell1.png'},
+ images: 'haskell1.png, haskell2.png'},
 {project_title: 'Skills',
  description: 'Programming Languages',
  images: 'Java, Ruby, Python 2 and 3, R, Julia, C, HTML, CSS, PostgreSQL, SQLite, HTML.erb. HAML, Haskell'},
