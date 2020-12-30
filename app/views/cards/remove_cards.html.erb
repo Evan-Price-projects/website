@@ -1,0 +1,32 @@
+<h1>Which card(s) would you like to remove?</h1>
+<%= form_tag cards_cards_to_remove_path do %>
+
+  <table class="table table-striped col-md-12" id="cards">
+    <thead>
+      <tr>
+        <th>Card</th>
+        <th>Name</th>
+        <th>Select</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.each do |card| %>
+        <tr>
+          <td>
+            <%= card.cardFront.html_safe %>
+          </td>
+          <td>
+            <%= card.name %>
+          </td>
+          <td>
+            <%= check_box_tag "checkbox[#{card[:id]}]" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <%= submit_tag 'Remove card(s)', :id => 'cards_button', :class => 'btn btn-primary'%>
+  <%= link_to 'Return to game', cards_path, :class => 'btn btn-primary' %>
+<% end %>

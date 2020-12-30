@@ -1,0 +1,25 @@
+<% if flash[:notice] %>
+  <div class="alert alert-danger">
+    <div class="message" id="notice">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+<% elsif flash[:warning] %>
+  <div class="alert alert-danger">
+    <div class="flashMessage" id="warning">
+      <%= flash[:warning] %>
+    </div>
+  </div>
+<% end %>
+<!--  app/views/users/show.html.erb -->
+<h3>Details about <em><%= @user.name %></em></h3>
+<ul id="details">
+  <li>
+    Table Name:
+    <%= @user.tablename %>
+  </li>
+</ul>
+<div class="row">
+  <%= link_to 'Choose Table', edit_user_path(@user), :class => 'btn btn-primary col-2' %>
+  <%= link_to 'Back to table', tables_path, :class => 'btn btn-primary col-2' %>
+</div>

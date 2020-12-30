@@ -1,0 +1,24 @@
+<h1>Sign-up</h1>
+<% if flash[:notice] %>
+  <div class="alert alert-danger">
+    <div class="message" id="notice">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+<% elsif flash[:warning] %>
+  <div class="alert alert-danger">
+    <div class="flashMessage" id="warning">
+      <%= flash[:warning] %>
+    </div>
+  </div>
+<% end %>
+<%= form_tag users_path, :class => 'form' do %>
+  <%= label :user, :name, 'Name', :class => 'col-form-label' %>
+  <%= text_field :user, 'name', :class => 'form-control' %>
+  <%= label :user, :password_digest, 'Password', :class => 'col-form-label'  %>
+  <%= password_field :user, 'password_digest', :class => 'form-control' %>
+
+  <br>
+  <%= submit_tag 'Create my Account', :id => 'signupCreate' , :class => 'btn btn-primary' %>
+  <%= link_to 'Cancel', login_path, :class => 'btn btn-secondary cancelbtn' %>
+<% end %>

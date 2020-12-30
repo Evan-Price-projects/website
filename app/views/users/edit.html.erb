@@ -1,0 +1,29 @@
+<% if flash[:notice] %>
+  <div class="alert alert-danger">
+    <div class="message" id="notice">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+<% elsif flash[:warning] %>
+  <div class="alert alert-danger">
+    <div class="flashMessage" id="warning">
+      <%= flash[:warning] %>
+    </div>
+  </div>
+<% end %>
+<%if !@tables.empty? %>
+<h1>Select Table you would like to join</h1>
+<%grouped_options = [] %>
+<% @tables.each do |table|%>
+  <% grouped_options << table.tablename %>
+<% end %>
+<%= form_tag user_path(@user), :method => :put do %>
+  <%= label :user, :tablename, 'Table name:', :class => 'col-form-label tablelb' %>
+  <%= select :user, :tablename, grouped_options.each {|table| table}, {}, {:class => 'form-control col-1 tablenm'} %>
+  <br/>
+  <%= submit_tag 'Choose Table', :class => 'btn btn-primary' %>
+  <%= link_to 'Cancel', tables_path, :class => 'btn btn-secondary' %>
+<% end %>
+<%else %>
+  <%= link_to 'Return there are no Tables', tables_path, :class => 'btn btn-secondary' %>
+<%end %>

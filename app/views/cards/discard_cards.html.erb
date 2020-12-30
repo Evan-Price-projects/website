@@ -1,0 +1,32 @@
+<h1>Which card(s) would you like to discard?</h1>
+<%= form_tag cards_cards_to_discard_path do %>
+
+  <table class="table table-striped col-md-12" id="cards">
+    <thead>
+      <tr>
+        <th>Card</th>
+        <th>Location</th>
+        <th>Select</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.each do |card| %>
+        <tr>
+          <td>
+            <p style="font-size: 4em"> <%= card.cardFront.html_safe %></p>
+          </td>
+          <td>
+            <%= card.location %>
+          </td>
+          <td>
+            <%= check_box_tag "checkbox[#{card[:id]}]" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+  <%= submit_tag 'Discard card(s)', :id => 'cards_button', :class => 'btn btn-primary' %>
+  <%= link_to 'Return to game', cards_path, :class => 'btn btn-primary' %>
+<% end %>

@@ -7,6 +7,6 @@ Things you may want to cover:
 https://www.dummies.com/web-design-development/html5/how-to-open-links-in-new-windows-or-tabs-with-html5 \
 https://www.w3schools.com/Css/tryit.asp?filename=trycss_table_fancy \
 https://stackoverflow.com/questions/28006358/undefined-method-raise-in-transactional-callbacks-for-activerecordbaseclass/28008145#28008145 \
-
+google grasshopper app tutorial for Javascript \
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

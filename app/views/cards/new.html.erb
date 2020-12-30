@@ -1,0 +1,84 @@
+<%= stylesheet_link_tag 'application'  %>
+<% if flash[:notice] %>
+  <div class="alert alert-danger">
+    <div class="message" id="notice">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+<% elsif flash[:warning] %>
+  <div class="alert alert-danger">
+    <div class="flashMessage" id="warning">
+      <%= flash[:warning] %>
+    </div>
+  </div>
+<% end %>
+<%= form_tag cards_path, :class => 'form' do %>
+<%  cards = [{ name: "AS", location: "deck", status: 1, cardFront: "&#127137", tablename: @current_user.tablename},
+  { name: "2S", location: "deck", status: 1, cardFront: "&#127138", tablename: @current_user.tablename},
+  { name: "3S", location: "deck", status: 1, cardFront: "&#127139", tablename: @current_user.tablename},
+  { name: "4S", location: "deck", status: 1, cardFront: "&#127140", tablename: @current_user.tablename},
+  { name: "5S", location: "deck", status: 1, cardFront: "&#127141", tablename: @current_user.tablename},
+  { name: "6S", location: "deck", status: 1, cardFront: "&#127142", tablename: @current_user.tablename},
+  { name: "7S", location: "deck", status: 1, cardFront: "&#127143", tablename: @current_user.tablename},
+  { name: "8S", location: "deck", status: 1, cardFront: "&#127144", tablename: @current_user.tablename},
+  { name: "9S", location: "deck", status: 1, cardFront: "&#127145", tablename: @current_user.tablename},
+  { name: "10S", location: "deck", status: 1, cardFront: "&#127146", tablename: @current_user.tablename},
+  { name: "JS", location: "deck", status: 1, cardFront: "&#127147", tablename: @current_user.tablename},
+  { name: "QS", location: "deck", status: 1, cardFront: "&#127149", tablename: @current_user.tablename},
+  { name: "KS", location: "deck", status: 1, cardFront: "&#127150", tablename: @current_user.tablename},
+  { name: "AH", location: "deck", status: 1, cardFront: "&#127153", tablename: @current_user.tablename},
+  { name: "2H", location: "deck", status: 1, cardFront: "&#127154", tablename: @current_user.tablename},
+  { name: "3H", location: "deck", status: 1, cardFront: "&#127155", tablename: @current_user.tablename},
+  { name: "4H", location: "deck", status: 1, cardFront: "&#127156", tablename: @current_user.tablename},
+  { name: "5H", location: "deck", status: 1, cardFront: "&#127157", tablename: @current_user.tablename},
+  { name: "6H", location: "deck", status: 1, cardFront: "&#127158", tablename: @current_user.tablename},
+  { name: "7H", location: "deck", status: 1, cardFront: "&#127159", tablename: @current_user.tablename},
+  { name: "8H", location: "deck", status: 1, cardFront: "&#127160", tablename: @current_user.tablename},
+  { name: "9H", location: "deck", status: 1, cardFront: "&#127161", tablename: @current_user.tablename},
+  { name: "10H", location: "deck", status: 1, cardFront: "&#127162", tablename: @current_user.tablename},
+  { name: "JH", location: "deck", status: 1, cardFront: "&#127163", tablename: @current_user.tablename},
+  { name: "QH", location: "deck", status: 1, cardFront: "&#127165", tablename: @current_user.tablename},
+  { name: "KH", location: "deck", status: 1, cardFront: "&#127166", tablename: @current_user.tablename},
+  { name: "AD", location: "deck", status: 1, cardFront: "&#127169", tablename: @current_user.tablename},
+  { name: "2D", location: "deck", status: 1, cardFront: "&#127170", tablename: @current_user.tablename},
+  { name: "3D", location: "deck", status: 1, cardFront: "&#127171", tablename: @current_user.tablename},
+  { name: "4D", location: "deck", status: 1, cardFront: "&#127172", tablename: @current_user.tablename},
+  { name: "5D", location: "deck", status: 1, cardFront: "&#127173", tablename: @current_user.tablename},
+  { name: "6D", location: "deck", status: 1, cardFront: "&#127174", tablename: @current_user.tablename},
+  { name: "7D", location: "deck", status: 1, cardFront: "&#127175", tablename: @current_user.tablename},
+  { name: "8D", location: "deck", status: 1, cardFront: "&#127176", tablename: @current_user.tablename},
+  { name: "9D", location: "deck", status: 1, cardFront: "&#127177", tablename: @current_user.tablename},
+  { name: "10D", location: "deck", status: 1, cardFront: "&#127178", tablename: @current_user.tablename},
+  { name: "JD", location: "deck", status: 1, cardFront: "&#127179", tablename: @current_user.tablename},
+  { name: "QD", location: "deck", status: 1, cardFront: "&#127181", tablename: @current_user.tablename},
+  { name: "KD", location: "deck", status: 1, cardFront: "&#127182", tablename: @current_user.tablename},
+  { name: "AC", location: "deck", status: 1, cardFront: "&#127185", tablename: @current_user.tablename},
+  { name: "2C", location: "deck", status: 1, cardFront: "&#127186", tablename: @current_user.tablename},
+  { name: "3C", location: "deck", status: 1, cardFront: "&#127187", tablename: @current_user.tablename},
+  { name: "4C", location: "deck", status: 1, cardFront: "&#127188", tablename: @current_user.tablename},
+  { name: "5C", location: "deck", status: 1, cardFront: "&#127189", tablename: @current_user.tablename},
+  { name: "6C", location: "deck", status: 1, cardFront: "&#127190", tablename: @current_user.tablename},
+  { name: "7C", location: "deck", status: 1, cardFront: "&#127191", tablename: @current_user.tablename},
+  { name: "8C", location: "deck", status: 1, cardFront: "&#127192", tablename: @current_user.tablename},
+  { name: "9C", location: "deck", status: 1, cardFront: "&#127193", tablename: @current_user.tablename},
+  { name: "10C", location: "deck", status: 1, cardFront: "&#127194", tablename: @current_user.tablename},
+  { name: "JC", location: "deck", status: 1, cardFront: "&#127195", tablename: @current_user.tablename},
+  { name: "QC", location: "deck", status: 1, cardFront: "&#127197", tablename: @current_user.tablename},
+  { name: "KC", location: "deck", status: 1, cardFront: "&#127198", tablename: @current_user.tablename},
+  { name: "RJ", location: "deck", status: 1, cardFront: "&#127167", tablename: @current_user.tablename},
+  { name: "BJ", location: "deck", status: 1, cardFront: "&#127183", tablename: @current_user.tablename},]%>
+
+ <% cards.each do |card|%>
+  <%if !(params[:checkbox].nil?) %>
+    <%key_arr = params[:checkbox].keys%>
+    <%if key_arr.include?(card[:name]) %>
+      <%   card[:location] = "Out of Play" %>
+      <%   card[:status] = 0 %>
+      <% end %>
+    <% end %>
+  <% Card.create!(card) %>
+  <%end%>
+
+  <%= label :card, :tablename, name: @current_user.tablename, :class => 'col-form-label' %>
+  <%= submit_tag "#{@current_user.tablename}" %>
+<% end %>
