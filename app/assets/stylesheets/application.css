@@ -60,11 +60,13 @@
         height: 50%
     }
     .projects_head{
+        padding: 1%;
         background: lightgrey;
         grid-row: 2;
         grid-column: span 12;
     }
     .title_spot{
+        padding: 1%;
         background: lightgrey;
         grid-row: 2;
         grid-column: span 12;
