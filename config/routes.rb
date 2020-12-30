@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   post 'cards/leave_game'
   post 'cards/discard_card'
   post 'cards/recover_discard'
-  root 'tables#index'
   post 'users/assign_current_user_table'
   post 'cards/discard_cards'
   get 'cards/discard_cards'
