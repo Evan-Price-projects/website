@@ -26,7 +26,7 @@
         <%git = "active" %>
       <%elsif !@images.nil? and current_page?(descriptions_images_path(@images.id))%>
         <%git = "active" %>
-      <%elsif current_page?(controller: 'cards') or current_page?(controller: 'users')%>
+      <%elsif current_page?(controller: 'cards') or current_page?(controller: 'users')or current_page?(controller: 'tables')%>
         <%game = "active" %>
 
       <%end %>
@@ -35,9 +35,7 @@
       <%=link_to "Experience", descriptions_experience_path, :id => 'Experience', class: exp%>
       <%=link_to "Skills", descriptions_skills_path, :id => "Skills", class: skills%>
       <%=link_to "Projects", descriptions_github_path, :id => "Github", class: git%>
-      <%= button_to "Sign up/Login", tables_path, :id => 'signupLogin' ,:method => :get %>
-
-
+      <%= link_to "Game", tables_path, :id => 'Game' ,:method => :get, class: game %>
 
     </div>
   </header>

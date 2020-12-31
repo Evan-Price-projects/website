@@ -65,6 +65,7 @@
         background: lightgrey;
         grid-row: 1;
         grid-column: span 3;
+        border: 1px solid #333;
     }
     .footer1{
         text-align: right;
@@ -91,7 +92,8 @@
         background: lightgrey;
         grid-row: 2;
         grid-column: span 12;
-    }    .projects_head1{
+    }
+    .projects_head1{
         padding: 1%;
         background: lightgrey;
         grid-row: 2;
