@@ -1,20 +1,16 @@
 <%= stylesheet_link_tag 'application'  %>
 
 
-<html>
-    <div class = 'grid-container'>
-      <header1>
-       <h1>Current Lobby: <%= "#{@current_user.name }"%></h1>
 
-      </header1>
-      <header1>
-        <%=form_tag(cards_discard_card_path(:commit => "a"),method: :post,name: 'discard_card', :remote=> true) do%>
+<div class = "projects_head1">
+       <h2>Current Lobby: <%= "#{@current_user.name }"%></h2>
+</div>
+<div class = "projects_head1">
+  <%=form_tag(cards_discard_card_path(:commit => "a"),method: :post,name: 'discard_card', :remote=> true) do%>
           <div class="secondary btn pretty"><%= label :discard, "Discard?"%></div>
           <div class="secondary btn pretty"><%= select :move, :movement, ["Unassigned","Me"]%></div>
           <div class="secondary btn pretty"><%= submit_tag 'Discard'%></div>
         <%end%>
-      </header1>
-      <header2>
         <% if flash[:notice] %>
           <div class="alert alert-danger">
             <div class="message" id="notice">
@@ -28,9 +24,22 @@
             </div>
           </div>
         <% end %>
-      </header2>
-  <body>
-  <section>
+</div>
+<div class = "projects1">
+  <div class = "draw">
+    &#128104
+    <%=link_to "&#127136".html_safe, cards_draw_card_path(commit: "Draw"), method: :post %>
+  </div>
+  <div class = "select">
+    <%=form_tag({:action=> 'select_card'}, method: :post, name: 'card_select', :remote => true) do%>
+      <div class="secondary btn pretty"><%= label :card_select, 'Specific Card?' %></div>
+      <div class="secondary btn pretty"><%= select_tag(:card_select, options_from_collection_for_select(@cards, :name, :name), multiple: false) %></div>
+      <div class="secondary btn pretty"><%= submit_tag 'Select'%></div>
+    <%end%>
+  </div>
+  <br><br>
+</div>
+<div class = "projects1">
     <h5><%="#{@current_user.name}'s In Play Hand"%></h5>
     <%z = @cards.where(location: @current_user.name, status: 4, UserID: @current_user.id).sort %>
     <% z.each do |card| %>
@@ -38,73 +47,6 @@
         <%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
       <% end %>
     <% end %>
-  </section>
-
-  <div class ="section2">
-    <h5>Opponent's in Play Hand</h5>
-    <%x = Card.where(status: 4, UserID: @current_user.id)%>
-    <%x=x.where.not(location: @current_user.name) %>
-    <%a = x.uniq.pluck(:location)%>
-    <%if a.include?('Dealer')%>
-      <%a -= ['Dealer'] %>
-      <% a = ['Dealer'] + a %>
-    <% end %>
-    <%h = Hash.new %>
-    <%a.each do |c| %>
-      <% unless c == @current_user.name %>
-        <%h[c] = x.where(location: c) %>
-        <%end %>
-    <%end %>
-    <%h.each do |key, value| %>
-        <h5><%="#{key}" %></h5>
-        <%value.sort %>
-        <% value.each do |card| %>
-          <%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
-        <% end %>
-        <%end %>
-      <br><br>
-
-  </div>
-  <div class ="section3">
-    <h4>Dealer</h4>
-    <%=link_to "&#127136".html_safe, cards_draw_card_path(commit: "Deal"), method: :post %>
-  </div>
-  <div class = "section4">
-  <div class ="hand">
-    <h4>Other Players Hands</h4>
-    <%listOfPlayers = Hash.new %>
-    <% @cards.each do |card| %>
-      <% if card.location != "GameDeck" and (card.status == 2 or card.status == 3) and card.location != "deck" and card.location != @current_user.name and card.UserID == @current_user.id%>
-        <%if listOfPlayers.has_key?("#{card.location}") %>
-          <%listOfPlayers["#{card.location}"] = listOfPlayers.fetch("#{card.location}") + 1 %>
-        <%else %>
-          <% listOfPlayers["#{card.location}"] = 1%>
-        <%end %>
-      <%end%>
-    <%end%>
-    <% listOfPlayers.each_pair do |key, value| %>
-      <%= key%>
-      <% (0..value-1).each do  %>
-        &#127136
-      <%end %>
-      <br>
-    <% end %>
-  </div>
-  </div>
-    <aside>
-      <div class = "draw">
-      &#128104
-        <%=link_to "&#127136".html_safe, cards_draw_card_path(commit: "Draw"), method: :post %>
-      </div>
-      <div class = "select">
-        <%=form_tag({:action=> 'select_card'}, method: :post, name: 'card_select', :remote => true) do%>
-          <div class="secondary btn pretty"><%= label :card_select, 'Specific Card?' %></div>
-          <div class="secondary btn pretty"><%= select_tag(:card_select, options_from_collection_for_select(@cards, :name, :name), multiple: false) %></div>
-          <div class="secondary btn pretty"><%= submit_tag 'Select'%></div>
-        <%end%>
-      </div>
-    </aside>
-      <main>
         <div class = "hand">
           <h4><%="#{@current_user.name}'s Hand"%></h4>
           <% @cards = @cards.where(UserID: @current_user.id).sort %>
@@ -115,8 +57,6 @@
           <%end%>
 
         </div>
-      </main>
-  <main>
     <div class = "hand">
       <h4><%="#{@current_user.name}'s Action Area"%></h4>
       <%counter = 0 %>
@@ -130,60 +70,64 @@
          <!-- &#127136 -->
         <%end%>
     </div>
-
-
-  </main>
-  <p class="extra3"></p>
-  <h3 class="extra2">Player actions</h3>
-  <p class="extra3"></p>
-  <div class = "extra">
+  </div>
+<div class = "projects1">
+  <h4>Dealer</h4>
+  <%=link_to "&#127136".html_safe, cards_draw_card_path(commit: "Deal"), method: :post %>
+  <br><br>
+  <h5>Opponent's in Play Hand</h5>
+  <%x = Card.where(status: 4, UserID: @current_user.id)%>
+  <%x=x.where.not(location: @current_user.name) %>
+  <%a = x.uniq.pluck(:location)%>
+  <%if a.include?('Dealer')%>
+    <%a -= ['Dealer'] %>
+    <% a = ['Dealer'] + a %>
+  <% end %>
+  <%h = Hash.new %>
+  <%a.each do |c| %>
+    <% unless c == @current_user.name %>
+      <%h[c] = x.where(location: c) %>
+    <%end %>
+  <%end %>
+</div>
+</div>
+<div class ="grid-container1">
+  <footer>
       <%=form_tag({:action=> 'recard_card'},method: :post,name: 'recard_card', :remote=> true) do%>
         <div class="secondary btn pretty"><%= label :move, :movement, 'Move?' %></div>
         <div class="secondary btn pretty"><%= select :move, :movement, ["Action to Hand","Board to Action","Hand to Assigned Deck"]%></div>
         <div class="secondary btn pretty"><%= submit_tag 'Move'%></div>
       <%end%>
-  </div>
-  <div class="extra">
+  </footer>
+  <footer>
     <%=form_tag({:action=> 'recover_discard'},method: :post, :remote=> true) do%>
       <div class="secondary btn pretty"><%= submit_tag 'Recover Discard'%></div>
       <% end %>
-  </div>
-  <div class = "extra">
-
+</footer>
+  <footer>
     <%=form_tag({:action=> 'pass_card'},method: :post,name: 'pass_card', :remote=> true) do%>
       <div class="secondary btn pretty"><%= label :to, 'Pass action cards to: ' %></div>
           <div class="secondary btn pretty"><%= select_tag(:to, options_for_select(User.where(id: @current_user.id).uniq.pluck(:name)), multiple: false) %></div>
         <div class="secondary btn pretty"><%= submit_tag 'Pass'%></div>
     <%end%>
-  </div>
-  <div class="extra">
+  </footer>
+  <footer>
     <%=form_tag(cards_discard_card_path(:commit => "b"),method: :post,name: 'discard_card', :remote=> true) do%>
       <div class="secondary btn pretty"><%= label :discard, "Discard?"%></div>
       <div class="secondary btn pretty"><%= select :move, :movement, ["Unassigned","Me"]%></div>
       <div class="secondary btn pretty"><%= submit_tag 'Discard'%></div>
     <%end%>
-  </div>
-  <footer><div></div></footer>
-  <footer><div></div></footer>
-
-  <footer>
+</footer>
+  <div class = "footer1">
     <%=form_tag({:action=> 'leave_game'},method: :post,name: 'leave_game', :remote=> true) do%>
       <div class="secondary btn pretty"><%= submit_tag 'Leave Game'%></div>
     <%end%>
-  </footer>
-  <footer><div></div></footer>
-  <footer><div></div></footer>
-  <footer><div></div></footer>
-  <footer><div></div></footer>
-  <footer><div></div></footer>
-  <footer><div></div></footer>
-  <footer>
+  </div>
+  <div class = "footer1">
     <%=form_tag({:action=> 'reset_card'},method: :post,name: 'reset_card', :remote=> true) do%>
       <div class="secondary btn pretty"><%= submit_tag 'Reset Game'%></div>
     <%end%>
-  </footer>
-  <footer><div></div></footer>
-  <footer><div></div></footer>
+  </div>
   <script>
       window.addEventListener("DOMContentLoaded", function() {
           setInterval(function(){
@@ -191,6 +135,4 @@
           }, 15000);
       });
   </script>
-  </body>
-  </div>
 </html>
