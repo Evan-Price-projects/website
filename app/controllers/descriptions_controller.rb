@@ -18,8 +18,10 @@ class DescriptionsController < ApplicationController
     elsif id.include? "github"
       render descriptions_github_path
     elsif id.include? "images"
-      @descriptions = Description.find(format)
+      @images = Description.find(format)
       render descriptions_images_path
+    elsif id.include? "game"
+      render session_path
     else
       @description = Description.find(id)
     end

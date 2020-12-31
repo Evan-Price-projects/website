@@ -21,3 +21,65 @@ descriptions = [
 descriptions.each do |description|
   Description.create!(description)
 end
+
+
+
+
+cards = [{ name: "AS", location: "deck", status: 1, cardFront: "&#127137", UserID: 1},
+         { name: "2S", location: "deck", status: 1, cardFront: "&#127138", UserID: 1},
+         { name: "3S", location: "deck", status: 1, cardFront: "&#127139", UserID: 1},
+         { name: "4S", location: "deck", status: 1, cardFront: "&#127140", UserID: 1},
+         { name: "5S", location: "deck", status: 1, cardFront: "&#127141", UserID: 1},
+         { name: "6S", location: "deck", status: 1, cardFront: "&#127142", UserID: 1},
+         { name: "7S", location: "deck", status: 1, cardFront: "&#127143", UserID: 1},
+         { name: "8S", location: "deck", status: 1, cardFront: "&#127144", UserID: 1},
+         { name: "9S", location: "deck", status: 1, cardFront: "&#127145", UserID: 1},
+         { name: "10S", location: "deck", status: 1, cardFront: "&#127146", UserID: 1},
+         { name: "JS", location: "deck", status: 1, cardFront: "&#127147", UserID: 1},
+         { name: "QS", location: "deck", status: 1, cardFront: "&#127149", UserID: 1},
+         { name: "KS", location: "deck", status: 1, cardFront: "&#127150", UserID: 1},
+         { name: "AH", location: "deck", status: 1, cardFront: "&#127153", UserID: 1},
+         { name: "2H", location: "deck", status: 1, cardFront: "&#127154", UserID: 1},
+         { name: "3H", location: "deck", status: 1, cardFront: "&#127155", UserID: 1},
+         { name: "4H", location: "deck", status: 1, cardFront: "&#127156", UserID: 1},
+         { name: "5H", location: "deck", status: 1, cardFront: "&#127157", UserID: 1},
+         { name: "6H", location: "deck", status: 1, cardFront: "&#127158", UserID: 1},
+         { name: "7H", location: "deck", status: 1, cardFront: "&#127159", UserID: 1},
+         { name: "8H", location: "deck", status: 1, cardFront: "&#127160", UserID: 1},
+         { name: "9H", location: "deck", status: 1, cardFront: "&#127161", UserID: 1},
+         { name: "10H", location: "deck", status: 1, cardFront: "&#127162", UserID: 1},
+         { name: "JH", location: "deck", status: 1, cardFront: "&#127163", UserID: 1},
+         { name: "QH", location: "deck", status: 1, cardFront: "&#127165", UserID: 1},
+         { name: "KH", location: "deck", status: 1, cardFront: "&#127166", UserID: 1},
+         { name: "AD", location: "deck", status: 1, cardFront: "&#127169", UserID: 1},
+         { name: "2D", location: "deck", status: 1, cardFront: "&#127170", UserID: 1},
+         { name: "3D", location: "deck", status: 1, cardFront: "&#127171", UserID: 1},
+         { name: "4D", location: "deck", status: 1, cardFront: "&#127172", UserID: 1},
+         { name: "5D", location: "deck", status: 1, cardFront: "&#127173", UserID: 1},
+         { name: "6D", location: "deck", status: 1, cardFront: "&#127174", UserID: 1},
+         { name: "7D", location: "deck", status: 1, cardFront: "&#127175", UserID: 1},
+         { name: "8D", location: "deck", status: 1, cardFront: "&#127176", UserID: 1},
+         { name: "9D", location: "deck", status: 1, cardFront: "&#127177", UserID: 1},
+         { name: "10D", location: "deck", status: 1, cardFront: "&#127178", UserID: 1},
+         { name: "JD", location: "deck", status: 1, cardFront: "&#127179", UserID: 1},
+         { name: "QD", location: "deck", status: 1, cardFront: "&#127181", UserID: 1},
+         { name: "KD", location: "deck", status: 1, cardFront: "&#127182", UserID: 1},
+         { name: "AC", location: "deck", status: 1, cardFront: "&#127185", UserID: 1},
+         { name: "2C", location: "deck", status: 1, cardFront: "&#127186", UserID: 1},
+         { name: "3C", location: "deck", status: 1, cardFront: "&#127187", UserID: 1},
+         { name: "4C", location: "deck", status: 1, cardFront: "&#127188", UserID: 1},
+         { name: "5C", location: "deck", status: 1, cardFront: "&#127189", UserID: 1},
+         { name: "6C", location: "deck", status: 1, cardFront: "&#127190", UserID: 1},
+         { name: "7C", location: "deck", status: 1, cardFront: "&#127191", UserID: 1},
+         { name: "8C", location: "deck", status: 1, cardFront: "&#127192", UserID: 1},
+         { name: "9C", location: "deck", status: 1, cardFront: "&#127193", UserID: 1},
+         { name: "10C", location: "deck", status: 1, cardFront: "&#127194", UserID: 1},
+         { name: "JC", location: "deck", status: 1, cardFront: "&#127195", UserID: 1},
+         { name: "QC", location: "deck", status: 1, cardFront: "&#127197", UserID: 1},
+         { name: "KC", location: "deck", status: 1, cardFront: "&#127198", UserID: 1},
+         { name: "RJ", location: "deck", status: 0, cardFront: "&#127167", UserID: 1},
+         { name: "BJ", location: "deck", status: 0, cardFront: "&#127183", UserID: 1}
+]
+cards.each do |card|
+  Card.create!(card)
+end

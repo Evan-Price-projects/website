@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   def new
   end
-
   def create
     #@user = User.find_by_user_id(user_id: params[:session][:user_id])
 
@@ -18,7 +17,7 @@ class SessionsController < ApplicationController
       puts(session[:session_token])
       self.set_current_user
       #flash[:notice] = "You are logged in as  #{params[:session][:name]}"
-      puts("this is current user #{@current_user.name} session token #{@current_user.session_token} pass #{@current_user.password_digest} tablename #{@current_user.tablename}")
+      puts("this is current user #{@current_user.name} session token #{@current_user.session_token} pass #{@current_user.password_digest}")
       redirect_to tables_path
     else
       flash[:notice] = "Sorry. Incorrect Name or Password"
@@ -30,7 +29,6 @@ class SessionsController < ApplicationController
     session[:name] = nil
     session[:password_digest] = nil
     session[:session_token] = nil
-    session[:tablename] = nil
     #flash[:notice] = "You have been logged out."
     redirect_to root_path
   end

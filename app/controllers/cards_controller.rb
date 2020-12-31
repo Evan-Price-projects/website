@@ -1,30 +1,17 @@
 
 class CardsController < ApplicationController
-  before_filter :set_current_user
   def new
   end
 
   def create
-    if Card.where(tablename: params[:commit]).exists?
       redirect_to tables_path
-    else
-      raise "Something is wrong with the db"
-    end
   end
   def show
     id = params[:id]
-    if id == 'discard_cards'
-      @cards = Card.where(tablename: @current_user.tablename).order(location: :asc)
-      render cards_discard_cards_path
-    elsif id == 'remove_cards'
-      @cards = Card.where(tablename: @current_user.tablename).order(location: :asc)
-      render cards_remove_cards_path
-    else
       @card = Card.find(id)
-    end
   end
   def index
-    @cards=Card.where(tablename: @current_user.tablename)
+    @cards=Card.all
     @cards.each_with_index do |card, indexs|
       if card[:location] == "deck" and card[:status] == 1
         Card.find(card[:id]).update(location: 'GameDeck')
@@ -33,7 +20,7 @@ class CardsController < ApplicationController
   end
   def take_from_board
     a = self.params[:commit]
-    change = Card.where(cardFront: a, tablename: @current_user.tablename)
+    change = Card.where(cardFront: a)
     change.each do |card|
       if card.status == 4
         Card.find(card.id).update(status: 3, location: @current_user.name)
@@ -46,7 +33,7 @@ class CardsController < ApplicationController
   end
   def play_card
     a = self.params[:commit]
-    change = Card.where(cardFront: a, location: @current_user.name, tablename: @current_user.tablename)
+    change = Card.where(cardFront: a, location: @current_user.name)
     change.each do |card|
       if card.status == 3 and card.location == @current_user.name
         Card.find(card.id).update(status: 4)
@@ -61,7 +48,7 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
   def reset_card
-    @cards=Card.where(tablename: @current_user.tablename).where.not(status:0)
+    @cards=Card.all.where.not(status:0)
     @cards.find_each do |card|
       unless card.status == 0
         if card.name == 'RJ' or card.name == 'BJ'
@@ -75,7 +62,7 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
   def recover_discard
-    @cards=Card.where(tablename: @current_user.tablename, status:5)
+    @cards=Card.where(status:5)
     @cards.find_each do |card|
       Card.find(card.id).update(status:1)
     end
@@ -87,17 +74,17 @@ class CardsController < ApplicationController
     movement = params[:move][:movement]
     case movement
     when 'Board to Action'
-      Card.where(location: @current_user.name, status: 4, tablename: @current_user.tablename).find_each do |card|
+      Card.where(location: @current_user.name, status: 4).find_each do |card|
         Card.find(card.id).update(status: 3)
         count +=1
       end
     when 'Action to Hand'
-      Card.where(location: @current_user.name,status: 3, tablename: @current_user.tablename).find_each do |card|
+      Card.where(location: @current_user.name,status: 3).find_each do |card|
         Card.find(card.id).update(status: 2)
         count +=1
       end
     when 'Hand to Assigned Deck'
-      Card.where(location: @current_user.name,status: 2, tablename: @current_user.tablename).find_each do |card|
+      Card.where(location: @current_user.name,status: 2).find_each do |card|
         Card.find(card.id).update(status: 1)
         count +=1
       end
@@ -115,13 +102,13 @@ class CardsController < ApplicationController
     case discard_params
     when "Me"
       if params[:commit] != 'a'
-      Card.where(status: 3, tablename: @current_user.tablename).find_each do |card|
+      Card.where(status: 3).find_each do |card|
         Card.find(card.id).update(location: @current_user.name, status: 5)
       end
       flash[:warning]="Discarded Action to Me"
       redirect_to cards_path
       else
-      Card.where(status: 4, tablename: @current_user.tablename).find_each do |card|
+      Card.where(status: 4).find_each do |card|
         Card.find(card.id).update(location: @current_user.name, status: 5)
       end
       flash[:warning]="Discarded to Me"
@@ -129,13 +116,13 @@ class CardsController < ApplicationController
       end
       when "Unassigned"
       if params[:commit] != 'a'
-        Card.where(status: 3, tablename: @current_user.tablename).find_each do |card|
+        Card.where(status: 3).find_each do |card|
         Card.find(card.id).update(location: 'GameDeck', status: 5)
         end
         flash[:warning]="Discarded Action to Unassigned"
         redirect_to cards_path
         else
-      Card.where(status: 4, tablename: @current_user.tablename).find_each do |card|
+      Card.where(status: 4).find_each do |card|
         Card.find(card.id).update(location: 'GameDeck', status: 5)
       end
       flash[:warning]="Discarded to Unassigned"
@@ -144,7 +131,7 @@ class CardsController < ApplicationController
     end
     end
   def pass_card
-    @cards=Card.where(tablename: @current_user.tablename)
+    @cards=Card.all
     @to = params[:to]
     count =0
     @from = @current_user.name
@@ -185,7 +172,7 @@ class CardsController < ApplicationController
         flash[:warning] = "decks empty"
       end
     else
-      card = Card.where(status:1, location: 'GameDeck', tablename: @current_user.tablename).shuffle
+      card = Card.where(status:1, location: 'GameDeck').shuffle
       if !card.first.nil?
         card.first.update(status:4, location: 'Dealer')
       else
@@ -195,7 +182,7 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
   def select_card
-    @cards = Card.where(tablename: @current_user.tablename)
+    @cards = Card.all
     card_val = params[:card_select]
     @cards.where(name: card_val).find_each do |card|
       Card.find(card.id).update!(location: @current_user.name, status: 2)
@@ -203,38 +190,8 @@ class CardsController < ApplicationController
     flash[:notice]="Selected card placed in user hand"
     redirect_to cards_path
   end
-  def cards_to_discard
-    if(params[:checkbox].nil?)
-      flash[:warning] = "No cards selected"
-      redirect_to cards_path
-    else
-      key_arr = params[:checkbox].keys
-      key_arr.each do |id|
-        card = Card.find_by(id: id)
-        card.update!(location: 'discard', status: 5)
-      end
-      redirect_to cards_path
-
-     end
-  end
-  def cards_to_remove
-    if(params[:checkbox].nil?)
-      flash[:warning] = "No cards selected"
-      redirect_to cards_path
-    else
-      key_arr = params[:checkbox].keys
-      key_arr.each do |id|
-        card = Card.find_by(id: id)
-        card.update!(location: 'Out of Play', status: 0)
-      end
-      redirect_to cards_path
-    end
-  end
-  def leave_game
-    redirect_to root_path
-  end
 
   def get_shuffled_deck
-    @cards=Card.where(tablename: @current_user.tablename).shuffle
+    @cards=Card.all.shuffle
   end
 end

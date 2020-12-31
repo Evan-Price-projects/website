@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def user_params
-    params.require(:user).permit(:tablename)
   end
   def new
     # default: render 'new' template
@@ -16,7 +15,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find params[:id]
     if (@user.update_attributes(user_params))
-      flash[:warning] = "#{@user.name} updated tablename to #{@user.tablename}."
       redirect_to user_path(@user)
     else
       flash[:warning] = "tablename could not be updated: " +
@@ -30,7 +28,6 @@ class UsersController < ApplicationController
       flash[:notice] = "Sorry, this users-id is taken. Try again."
       redirect_to new_user_path
      else
-       params[:tablename] = "Table 1"
       @users = User.create_user!(params)  #User.create!(user_params)
       flash[:notice] = "Welcome #{@users.name}. Your account has been created."
       redirect_to login_path
@@ -42,7 +39,6 @@ class UsersController < ApplicationController
   end
   def assign_current_user_table
     @user = User.where(name: @current_user.name).first
-    @user.update(tablename: params[:user])
     redirect_to tables_path
   end
 

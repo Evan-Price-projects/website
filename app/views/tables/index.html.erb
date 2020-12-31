@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag 'application'  %>
+
+<!--  This file is app/views/movies/index.html.erb -->
+<%if !@current_user%>
+  <h1>Welcome to Aces!</h1>
+  <h3>Please Login to begin.</h3>
+  <center><%= button_to "Sign up/Login", login_path, :id => 'signupLogin' ,:method => :get %></center>
+<%else %>
+<h1>All Games</h1>
+<table class="table table-striped col-md-12" id="movies">
+  <thead>
+  <tr>
+    <th>Table Name</th>
+    <th>Enter Game</th>
+    <th>Delete Table?</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%count = 0 %>
+  <% @tables.each do |table| %>
+    <tr>
+      <td>
+        <%=table.tablename %>
+      </td>
+      <td>
+        <% if table.tablename == @current_user.tablename %>
+          <%= form_tag cards_path, :id => "gameBoard", method: :get%>
+            <%=submit_tag "Enter Game",name: table.tablename %>
+          <%end %>
+      </td>
+      <td>
+        <%= link_to "Delete table", table_path(table), :class => 'btn btn-primary' %>
+      </td>
+  <%end %>
+    </tr>
+  </tbody>
+  <%=link_to 'Add new Game', new_table_path, :class => 'btn btn-primary' %>
+</table>
+  <%= link_to "Choose Table", user_path(User.where(name: @current_user.name).first, @tables), :class => 'btn btn-primary' %>
+<%end %>

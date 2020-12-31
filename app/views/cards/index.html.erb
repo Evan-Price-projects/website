@@ -4,7 +4,7 @@
 <html>
     <div class = 'grid-container'>
       <header1>
-       <h1>Current Lobby: <%= @current_user.tablename %></h1>
+       <h1>Current Lobby: <%= @current_user.UserID %></h1>
 
       </header1>
       <header1>
@@ -32,7 +32,7 @@
   <body>
   <section>
     <h5><%="#{@current_user.name}'s In Play Hand"%></h5>
-    <%z = @cards.where(location: @current_user.name, status: 4, tablename: @current_user.tablename).sort %>
+    <%z = @cards.where(location: @current_user.name, status: 4, UserID: @current_user.UserID).sort %>
     <% z.each do |card| %>
       <% if card.location == @current_user.name and card.status ==4%>
         <%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
@@ -42,7 +42,7 @@
 
   <div class ="section2">
     <h5>Opponent's in Play Hand</h5>
-    <%x = Card.where(status: 4, tablename: @current_user.tablename)%>
+    <%x = Card.where(status: 4, UserID: @current_user.UserID)%>
     <%x=x.where.not(location: @current_user.name) %>
     <%a = x.uniq.pluck(:location)%>
     <%if a.include?('Dealer')%>
@@ -74,7 +74,7 @@
     <h4>Other Players Hands</h4>
     <%listOfPlayers = Hash.new %>
     <% @cards.each do |card| %>
-      <% if card.location != "GameDeck" and (card.status == 2 or card.status == 3) and card.location != "deck" and card.location != @current_user.name and card.tablename == @current_user.tablename%>
+      <% if card.location != "GameDeck" and (card.status == 2 or card.status == 3) and card.location != "deck" and card.location != @current_user.name and card.UserID == @current_user.UserID%>
         <%if listOfPlayers.has_key?("#{card.location}") %>
           <%listOfPlayers["#{card.location}"] = listOfPlayers.fetch("#{card.location}") + 1 %>
         <%else %>
@@ -107,7 +107,7 @@
       <main>
         <div class = "hand">
           <h4><%="#{@current_user.name}'s Hand"%></h4>
-          <% @cards = @cards.where(tablename: @current_user.tablename).sort %>
+          <% @cards = @cards.where(UserID: @current_user.UserID).sort %>
           <% @cards.each do |card| %>
             <% if card.location == @current_user.name and card.status ==2%>
               <%=link_to "#{card.cardFront}".html_safe, cards_play_card_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
@@ -147,14 +147,12 @@
     <%=form_tag({:action=> 'recover_discard'},method: :post, :remote=> true) do%>
       <div class="secondary btn pretty"><%= submit_tag 'Recover Discard'%></div>
       <% end %>
-    <%=link_to 'Discard', cards_discard_cards_path(:sort => 'location'), :id => 'discard_link' %>
-    <%=link_to 'Remove Cards', cards_remove_cards_path(:sort => 'location'), :id => 'remove_link' %>
   </div>
   <div class = "extra">
 
     <%=form_tag({:action=> 'pass_card'},method: :post,name: 'pass_card', :remote=> true) do%>
       <div class="secondary btn pretty"><%= label :to, 'Pass action cards to: ' %></div>
-          <div class="secondary btn pretty"><%= select_tag(:to, options_for_select(User.where(tablename: @current_user.tablename).uniq.pluck(:name)), multiple: false) %></div>
+          <div class="secondary btn pretty"><%= select_tag(:to, options_for_select(User.where(UserID: @current_user.UserID).uniq.pluck(:name)), multiple: false) %></div>
         <div class="secondary btn pretty"><%= submit_tag 'Pass'%></div>
     <%end%>
   </div>

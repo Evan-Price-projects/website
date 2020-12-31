@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :descriptions, :cards, :users, :sessions
+  resources :descriptions, :cards, :users, :sessions, :tables
   root 'descriptions#index'
   get 'descriptions/experience'
   get 'descriptions/education'
@@ -20,10 +20,6 @@ Rails.application.routes.draw do
   post 'cards/recover_discard'
   post 'users/assign_current_user_table'
   post 'cards/discard_cards'
-  get 'cards/discard_cards'
-  post 'cards/cards_to_discard'
-  get 'cards/remove_cards'
-  post 'cards/cards_to_remove'
   match '/login', to: 'sessions#new', via: :get
   match '/login_create', to: 'sessions#create', via: :post
   match '/logout', to: 'sessions#destroy', via: :delete

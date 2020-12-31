@@ -1,6 +1,7 @@
 #require 'bcrypt's
 class User < ActiveRecord::Base
   belongs_to :description
+  belongs_to :tables
   #include BCrypt
   has_secure_password
   validates :name, presence: true, length: {maximum: 50, minimum: 1}
@@ -17,6 +18,6 @@ class User < ActiveRecord::Base
     #puts("password #{Digest::SHA2.hexdigest(params[:user][:password])}")
     #User.create!(params.require(:user).permit(:name, Digest::SHA2.hexdigest(:password_digest.to_s)).merge(session_token: SecureRandom.base64))
     #User.create!(params.require(:user).permit(:name, :password).merge(session_token: SecureRandom.base64))
-    User.create(tablename: params[:user][:tablename], name: params[:user][:name], password_digest: Digest::SHA2.hexdigest(params[:user][:password_digest]), session_token: SecureRandom.base64)
+    User.create(name: params[:user][:name], password_digest: Digest::SHA2.hexdigest(params[:user][:password_digest]), session_token: SecureRandom.base64)
   end
 end
