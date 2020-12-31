@@ -26,18 +26,16 @@
         <% end %>
 </div>
 <div class = "projects1">
-  <div class = "draw">
     &#128104
     <%=link_to "&#127136".html_safe, cards_draw_card_path(commit: "Draw"), method: :post %>
-  </div>
-  <div class = "select">
-    <%=form_tag({:action=> 'select_card'}, method: :post, name: 'card_select', :remote => true) do%>
-      <div class="secondary btn pretty"><%= label :card_select, 'Specific Card?' %></div>
-      <div class="secondary btn pretty"><%= select_tag(:card_select, options_from_collection_for_select(@cards, :name, :name), multiple: false) %></div>
-      <div class="secondary btn pretty"><%= submit_tag 'Select'%></div>
-    <%end%>
-  </div>
   <br><br>
+    <h4><%="#{@current_user.name}'s Hand"%></h4>
+    <% z = @cards.where(UserID: @current_user.id).sort %>
+    <% z.each do |card| %>
+      <% if card.location == @current_user.name and card.status ==2%>
+        <%=link_to "#{card.cardFront}".html_safe, cards_play_card_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
+      <%end%>
+    <%end%>
 </div>
 <div class = "projects1">
     <h5><%="#{@current_user.name}'s In Play Hand"%></h5>
@@ -47,29 +45,12 @@
         <%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
       <% end %>
     <% end %>
-        <div class = "hand">
-          <h4><%="#{@current_user.name}'s Hand"%></h4>
-          <% @cards = @cards.where(UserID: @current_user.id).sort %>
-          <% @cards.each do |card| %>
-            <% if card.location == @current_user.name and card.status ==2%>
-              <%=link_to "#{card.cardFront}".html_safe, cards_play_card_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
-            <%end%>
-          <%end%>
-
-        </div>
-    <div class = "hand">
       <h4><%="#{@current_user.name}'s Action Area"%></h4>
-      <%counter = 0 %>
         <% @cards.each do |card| %>
           <% if card.location == @current_user.name and card.status ==3%>
             <%=link_to "#{card.cardFront}".html_safe, cards_play_card_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
-            <%counter+=1 %>
           <%end%>
         <%end%>
-        <%if counter==0%>
-         <!-- &#127136 -->
-        <%end%>
-    </div>
   </div>
 <div class = "projects1">
   <h4>Dealer</h4>
