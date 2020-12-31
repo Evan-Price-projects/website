@@ -16,10 +16,9 @@ class TablesController < ApplicationController
   end
   def destroy
     @table = Table.find(params[:id])
-    t1 = @table.tablename
+    t1 = @table.UserID
     @table.destroy
-    @cards = Card.where(tablename:t1)
-    @cards.each do |card|
+    Card.find_each(UserID:t1) do |card|
       card.destroy
     end
     redirect_to tables_path

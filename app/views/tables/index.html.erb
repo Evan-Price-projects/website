@@ -20,13 +20,11 @@
   <% @tables.each do |table| %>
     <tr>
       <td>
-        <%=table.tablename %>
+        <%="#{User.find(table.UserID).name} created table"%>
       </td>
       <td>
-        <% if table.tablename == @current_user.tablename %>
           <%= form_tag cards_path, :id => "gameBoard", method: :get%>
-            <%=submit_tag "Enter Game",name: table.tablename %>
-          <%end %>
+            <%=submit_tag "Enter Game",name: table.UserID %>
       </td>
       <td>
         <%= link_to "Delete table", table_path(table), :class => 'btn btn-primary' %>

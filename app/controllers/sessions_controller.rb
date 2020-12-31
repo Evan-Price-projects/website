@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       puts(session[:session_token])
       self.set_current_user
       #flash[:notice] = "You are logged in as  #{params[:session][:name]}"
-      puts("this is current user #{@current_user.name} session token #{@current_user.session_token} pass #{@current_user.password_digest}")
+      puts("this is current user #{@current_user.name} session token #{@current_user.session_token} pass #{@current_user.password_digest} UserID #{@current_user.UserID}")
       redirect_to tables_path
     else
       flash[:notice] = "Sorry. Incorrect Name or Password"
