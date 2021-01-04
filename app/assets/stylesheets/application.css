@@ -77,15 +77,12 @@
         background: lightgrey;
         grid-row: 3;
         grid-column: span 4;
-        width: auto;
-        height: 50%;
     }
 
     section {
         background: lightgrey;
         grid-row: 3;
         grid-column: span 8;
-        height: 50%
     }
     .projects_head{
         padding: 1%;
