@@ -1,17 +1,20 @@
 <%= stylesheet_link_tag 'application'  %>
-<% if flash[:notice] %>
-  <div class="alert alert-danger">
-    <div class="message" id="notice">
-      <%= flash[:notice] %>
+
+<div class = "projects_head"><h1>Verify Table Creation</h1></div>
+<div class = "projects">
+  <% if flash[:notice] %>
+    <div class="alert alert-danger">
+      <div class="message" id="notice">
+        <%= flash[:notice] %>
+      </div>
     </div>
-  </div>
-<% elsif flash[:warning] %>
-  <div class="alert alert-danger">
-    <div class="flashMessage" id="warning">
-      <%= flash[:warning] %>
+  <% elsif flash[:warning] %>
+    <div class="alert alert-danger">
+      <div class="flashMessage" id="warning">
+        <%= flash[:warning] %>
+      </div>
     </div>
-  </div>
-<% end %>
+    <%end %>
 <%= form_tag cards_path, :class => 'form' do %>
 <%  cards = [{ name: "AS", location: "deck", status: 1, cardFront: "&#127137", table_id: Table.last.id},
   { name: "2S", location: "deck", status: 1, cardFront: "&#127138", table_id: Table.last.id},
@@ -78,7 +81,27 @@
     <% end %>
   <% Card.create!(card) %>
   <%end%>
-
+    <table id="github">
+      <thead>
+      <tr>
+        <th>Card</th>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% Card.where(table_id: Table.last.id, status: 1).each do |card| %>
+        <tr>
+          <td>
+            <%= card[:cardFront].html_safe %>
+          </td>
+          <td>
+            <%= card[:name] %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   <%= label :card, :table_id, name: Table.last.id, :class => 'col-form-label' %>
-  <%= submit_tag "#{@current_user.name}" %>
+  <%= submit_tag "Is this Correct?" %>
 <% end %>
+</div>

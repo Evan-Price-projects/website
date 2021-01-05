@@ -127,7 +127,7 @@
     .projects1{
         background: lightgrey;
         grid-row: 3;
-        grid-column: span 4;
+        grid-column: span 3;
         overflow: scroll;
     }
     .topnav {

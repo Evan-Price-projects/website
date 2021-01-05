@@ -15,7 +15,7 @@ class TablesController < ApplicationController
     @table = Table.find(params[:id])
     t1 = @table.id
     @table.destroy
-    Card.find_each(table_id:t1) do |card|
+    Card.where(table_id:t1).find_each do |card|
       card.destroy
     end
     redirect_to tables_path
