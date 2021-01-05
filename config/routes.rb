@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :descriptions
+  resources :descriptions, :cards, :users, :sessions, :tables
   root 'descriptions#index'
   get 'descriptions/experience'
   get 'descriptions/education'
@@ -7,6 +7,20 @@ Rails.application.routes.draw do
   get 'descriptions/github'
   get 'descriptions/contactme'
   get 'descriptions/images'
+  post 'cards/play_card'
+  post 'cards/draw_card'
+  post 'cards/reset_card'
+  post 'cards/select_card'
+  post 'cards/pass_card'
+  post 'cards/recard_card'
+  post 'cards/take_from_board'
+  post 'cards/discard_card'
+  post 'cards/recover_discard'
+  post 'users/assign_current_user_table'
+  post 'cards/discard_cards'
+  match '/login', to: 'sessions#new', via: :get
+  match '/login_create', to: 'sessions#create', via: :post
+  match '/logout', to: 'sessions#destroy', via: :delete
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,127 @@
+<%= stylesheet_link_tag 'application'  %>
+
+
+
+<div class = "projects_head1">
+       <h2>Current Lobby: <%= "#{@current_user.name }"%></h2>
+</div>
+<div class = "projects_head1">
+  <%=form_tag(cards_discard_card_path(:commit => "a"),method: :post,name: 'discard_card', :remote=> true) do%>
+          <div class="secondary btn pretty"><%= label :discard, "Discard?"%></div>
+          <div class="secondary btn pretty"><%= select :move, :movement, ["Unassigned","Me"]%></div>
+          <div class="secondary btn pretty"><%= submit_tag 'Discard'%></div>
+        <%end%>
+        <% if flash[:notice] %>
+          <div class="alert alert-danger">
+            <div class="message" id="notice">
+              <%= flash[:notice] %>
+            </div>
+          </div>
+        <% elsif flash[:warning] %>
+          <div class="alert alert-danger">
+            <div class="flashMessage" id="warning">
+              <%= flash[:warning] %>
+            </div>
+          </div>
+        <% end %>
+</div>
+<div class = "projects1">
+  <h4>Draw</h4>
+  &#128104
+    <%=link_to "&#127136".html_safe, cards_draw_card_path(commit: "Draw"), method: :post %>
+  <h4>Draw For Dealer</h4>
+  <%=link_to "&#127136".html_safe, cards_draw_card_path(commit: "Deal"), method: :post %>
+  </div>
+<div class = "projects1">
+    <h4><%="#{@current_user.name}'s Hand"%></h4>
+    <% z = @cards.where(table_id: @current_user.table_id).sort %>
+    <% z.each do |card| %>
+      <% if card.location == @current_user.name and card.status ==2%>
+        <%=link_to "#{card.cardFront}".html_safe, cards_play_card_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
+      <%end%>
+    <%end%>
+  <h4><%="#{@current_user.name}'s Action Area"%></h4>
+  <% @cards.each do |card| %>
+    <% if card.location == @current_user.name and card.status ==3%>
+      <%=link_to "#{card.cardFront}".html_safe, cards_play_card_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
+    <%end%>
+  <%end%>
+</div>
+<div class = "projects1">
+    <h5><%="#{@current_user.name}'s In Play Hand"%></h5>
+    <%z = @cards.where(location: @current_user.name, status: 4, table_id: @current_user.table_id).sort %>
+    <% z.each do |card| %>
+      <% if card.location == @current_user.name and card.status ==4%>
+        <%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
+      <% end %>
+    <% end %>
+  </div>
+<div class = "projects1">
+  <h5>Opponent's in Play Hand</h5>
+  <%x = Card.where(status: 4, table_id: @current_user.table_id)%>
+  <%x=x.where.not(location: @current_user.name) %>
+  <%a = x.uniq.pluck(:location)%>
+  <%if a.include?('Dealer')%>
+    <%a -= ['Dealer'] %>
+    <% a = ['Dealer'] + a %>
+  <% end %>
+  <%h = Hash.new %>
+  <%a.each do |c| %>
+    <% unless c == @current_user.name %>
+      <%h[c] = x.where(location: c) %>
+    <%end %>
+  <%end %>
+  <%h.each do |key, value| %>
+    <h5><%="#{key}" %></h5>
+    <%value.sort %>
+    <% value.each do |card| %>
+      <%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
+    <% end %>
+  <%end %>
+</div>
+</div>
+<div class ="grid-container1">
+  <footer>
+      <%=form_tag({:action=> 'recard_card'},method: :post,name: 'recard_card', :remote=> true) do%>
+      <div class="secondary btn pretty"><%= label :move, :movement, 'Move?' %></div>
+        <div class="secondary btn pretty"><%= select :move, :movement, ["Action to Hand","Board to Action","Hand to Assigned Deck"]%></div>
+        <div class="secondary btn pretty"><%= submit_tag 'Move'%></div>
+      <%end%>
+  </footer>
+  <footer>
+    <%=form_tag({:action=> 'recover_discard'},method: :post, :remote=> true) do%>
+      <div class="secondary btn pretty"><%= submit_tag 'Recover Discard'%></div>
+      <% end %>
+</footer>
+  <footer>
+    <%=form_tag({:action=> 'pass_card'},method: :post,name: 'pass_card', :remote=> true) do%>
+      <div class="secondary btn pretty"><%= label :to, 'Pass action cards to: ' %></div>
+          <div class="secondary btn pretty"><%= select_tag(:to, options_for_select(User.where(id: @current_user.id).uniq.pluck(:name)), multiple: false) %></div>
+        <div class="secondary btn pretty"><%= submit_tag 'Pass'%></div>
+    <%end%>
+  </footer>
+  <footer>
+    <%=form_tag(cards_discard_card_path(:commit => "b"),method: :post,name: 'discard_card', :remote=> true) do%>
+      <div class="secondary btn pretty"><%= label :discard, "Discard?"%></div>
+      <div class="secondary btn pretty"><%= select :move, :movement, ["Unassigned","Me"]%></div>
+      <div class="secondary btn pretty"><%= submit_tag 'Discard'%></div>
+    <%end%>
+</footer>
+  <div class = "footer1">
+    <%=form_tag(cards_reset_card_path(commit: 'leave_game'),method: :post,name: 'leave_game', :remote=> true) do%>
+      <div class="secondary btn pretty"><%= submit_tag 'Leave Game'%></div>
+    <%end%>
+  </div>
+  <div class = "footer1">
+    <%=form_tag(cards_reset_card_path(commit: 'reset_game'),method: :post,name: 'reset_game', :remote=> true) do%>
+      <div class="secondary btn pretty"><%= submit_tag 'Reset Game'%></div>
+    <%end%>
+  </div>
+  <script>
+      window.addEventListener("DOMContentLoaded", function() {
+          setInterval(function(){
+              location.reload();
+          }, 15000);
+      });
+  </script>
+

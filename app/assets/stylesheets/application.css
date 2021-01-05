@@ -35,6 +35,22 @@
 
         grid-template-rows: 1fr 1fr 8fr 1%;
     }
+    .grid-container1 {
+        background: grey;
+        min-width: 60%;
+        max-width: 80%;
+        height: 20vh;
+
+        margin: 0 auto;
+        text-align: left;
+        flex-direction: row;
+
+        display: grid;
+
+        grid-template-columns: repeat(12, 1fr);
+
+        grid-template-rows: 4fr 4fr 1%;
+    }
     header {
         background: lightgrey;
         grid-row: 1;
@@ -45,25 +61,50 @@
         grid-row: 3;
         grid-column: span 12;
     }
+    .spacer{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 4;
+    }
+    .full3{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 8;
+    }
+    footer{
+        background: lightgrey;
+        grid-row: 1;
+        grid-column: span 3;
+        border: 1px solid #333;
+    }
+    .footer1{
+        text-align: right;
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 6;
+    }
     .img {
         background: lightgrey;
         grid-row: 3;
         grid-column: span 4;
-        width: auto;
-        height: 50%;
     }
 
     section {
         background: lightgrey;
         grid-row: 3;
         grid-column: span 8;
-        height: 50%
     }
     .projects_head{
         padding: 1%;
         background: lightgrey;
         grid-row: 2;
         grid-column: span 12;
+    }
+    .projects_head1{
+        padding: 1%;
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 6;
     }
     .title_spot{
         padding: 1%;
@@ -75,6 +116,18 @@
         background: lightgrey;
         grid-row: 3;
         grid-column: span 12;
+        overflow: scroll;
+    }
+    .projects2{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 8;
+        overflow: scroll;
+    }
+    .projects1{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 3;
         overflow: scroll;
     }
     .topnav {
@@ -119,6 +172,13 @@
         color: black;
     }
     #github {
+        overflow-y: auto;
+    }
+    #github thead th {
+        position: sticky;
+        top: 0;
+    }
+    #github {
         font-family: Arial, Helvetica, sans-serif;
         border-collapse: collapse;
         width: 100%;
@@ -135,5 +195,9 @@
         text-align: left;
         background-color: #333;
         color: gold;
+    }
+    input, label {
+        float: left;
+        display: inline;
     }
 }

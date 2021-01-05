@@ -1,0 +1,27 @@
+<div class = "projects_head"><h1>Sign-up</h1></div>
+<div class = "spacer">
+<% if flash[:notice] %>
+  <div class="alert alert-danger">
+    <div class="message" id="notice">
+      <%= flash[:notice] %>
+    </div>
+  </div>
+<% elsif flash[:warning] %>
+  <div class="alert alert-danger">
+    <div class="flashMessage" id="warning">
+      <%= flash[:warning] %>
+    </div>
+  </div>
+<% end %>
+</div>
+<div class = "full3">
+    <h4>Create Account</h4>
+    <%= form_tag users_path, :class => 'form' do %>
+      <div class="secondary btn pretty"><%= label :user, :name, 'Name', :class => 'col-form-label' %></div>
+      <div class="secondary btn pretty"><%= text_field :user, 'name', :class => 'form-control' %></div><br><br>
+      <div class="secondary btn pretty"><%= label :user, :password_digest, 'Password', :class => 'col-form-label'  %></div>
+      <div class="secondary btn pretty"><%= password_field :user, 'password_digest', :class => 'form-control' %></div><br><br>
+  <%= submit_tag 'Create my Account', :id => 'signupCreate' , :class => 'btn btn-primary' %><br><br>
+  <%= link_to 'Cancel', login_path, :class => 'btn btn-secondary cancelbtn' %>
+<% end %>
+</div>

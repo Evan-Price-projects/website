@@ -1,0 +1,40 @@
+<%= stylesheet_link_tag 'application'  %>
+
+<!--  This file is app/views/movies/index.html.erb -->
+<%if !@current_user%>
+  <div class = "projects_head"><h3>Please Login to begin.</h3></div>
+  <div class = "projects">
+  <%= button_to "Sign up/Login", login_path, :id => 'signupLogin' ,:method => :get %></div>
+<%else %>
+  <div class = "projects_head"><h1>All Games</h1></div>
+  <div class = "projects">
+<table id="github">
+  <thead>
+  <tr>
+    <th>Table Number</th>
+    <th>Enter Game</th>
+    <th>Delete Table?</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @tables.each do |table| %>
+    <tr>
+      <td>
+        <%="#{table.id}"%>
+      </td>
+      <td>
+        <%if @current_user.table_id == table.id%>
+          <%= form_tag cards_path, :id => "gameBoard", method: :get%>
+            <%=submit_tag "Enter Game",name: table %>
+          <%end %>
+      </td>
+      <td>
+        <%= link_to "Delete table", table_path(table), :class => 'btn btn-primary' %>
+      </td>
+  <%end %>
+    </tr>
+  </tbody>
+  <%=link_to 'Add new Game', new_table_path, :class => 'btn btn-primary' %>
+</table>
+  <%= link_to "Choose Table", user_path(User.where(name: @current_user.name).first, @tables), :class => 'btn btn-primary' %>
+<%end %></div>

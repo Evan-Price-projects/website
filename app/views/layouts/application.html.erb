@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,7 @@
   <header>
     <div class="topnav">
       <%if current_page?(root_path) %>
+
         <%root = "active" %>
       <%elsif current_page?(descriptions_education_path)%>
         <%edu = "active" %>
@@ -22,8 +24,10 @@
         <%skills = "active" %>
       <%elsif current_page?(descriptions_github_path)%>
         <%git = "active" %>
-      <%elsif current_page?(descriptions_images_path(@descriptions.id))%>
+      <%elsif !@images.nil? and current_page?(descriptions_images_path(@images.id))%>
         <%git = "active" %>
+      <%elsif current_page?(controller: 'cards') or current_page?(controller: 'users')or current_page?(controller: 'tables')%>
+        <%game = "active" %>
 
       <%end %>
       <%=link_to "Home", root_path, class: root %>
@@ -31,8 +35,7 @@
       <%=link_to "Experience", descriptions_experience_path, :id => 'Experience', class: exp%>
       <%=link_to "Skills", descriptions_skills_path, :id => "Skills", class: skills%>
       <%=link_to "Projects", descriptions_github_path, :id => "Github", class: git%>
-
-
+      <%= link_to "Game", tables_path, :id => 'Game' ,:method => :get, class: game %>
 
     </div>
   </header>
