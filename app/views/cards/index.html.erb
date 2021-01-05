@@ -75,7 +75,7 @@
 <div class ="grid-container1">
   <footer>
       <%=form_tag({:action=> 'recard_card'},method: :post,name: 'recard_card', :remote=> true) do%>
-        <div class="secondary btn pretty"><%= label :move, :movement, 'Move?' %></div>
+      <div class="secondary btn pretty"><%= label :move, :movement, 'Move?' %></div>
         <div class="secondary btn pretty"><%= select :move, :movement, ["Action to Hand","Board to Action","Hand to Assigned Deck"]%></div>
         <div class="secondary btn pretty"><%= submit_tag 'Move'%></div>
       <%end%>
