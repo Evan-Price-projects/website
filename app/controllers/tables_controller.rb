@@ -2,7 +2,7 @@ class TablesController < ApplicationController
   def home
   end
   def table_params
-    params.require(:table).permit(:UserID)
+    params.require(:table).permit(:UserID, :UserNum)
   end
   def show
     id = params[:id] # retrieve movie ID from URI route

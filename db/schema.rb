@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_12_31_133535) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "card_id"
     t.integer "user_id"
+    t.integer "UserNum"
     t.integer "UserID"
     t.index ["card_id"], name: "index_tables_on_card_id"
     t.index ["user_id"], name: "index_tables_on_user_id"
