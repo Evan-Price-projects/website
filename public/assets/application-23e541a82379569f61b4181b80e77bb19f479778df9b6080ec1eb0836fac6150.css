@@ -1,0 +1,203 @@
+
+@media screen {
+    h1 {
+        font-size: 220%;
+    }
+    h2{
+        font-size: 180%;
+    }
+    h3{
+        font-size: 135%;
+    }
+    h4{
+        font-size: 100%;
+    }
+    h5{
+        font-size: 80%
+    }
+    body {
+        background: grey;
+    }
+
+    .grid-container {
+        background: grey;
+        min-width: 60%;
+        max-width: 80%;
+        height: 70vh;
+
+        margin: 0 auto;
+        text-align: left;
+        flex-direction: row;
+
+        display: grid;
+
+        grid-template-columns: repeat(12, 1fr);
+
+        grid-template-rows: 1fr 1fr 8fr 1%;
+    }
+    .grid-container1 {
+        background: grey;
+        min-width: 60%;
+        max-width: 80%;
+        height: 20vh;
+
+        margin: 0 auto;
+        text-align: left;
+        flex-direction: row;
+
+        display: grid;
+
+        grid-template-columns: repeat(12, 1fr);
+
+        grid-template-rows: 4fr 4fr 1%;
+    }
+    header {
+        background: lightgrey;
+        grid-row: 1;
+        grid-column: span 12;
+    }
+    .full2{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 12;
+    }
+    .spacer{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 4;
+    }
+    .full3{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 8;
+    }
+    footer{
+        background: lightgrey;
+        grid-row: 1;
+        grid-column: span 3;
+        border: 1px solid #333;
+    }
+    .footer1{
+        text-align: right;
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 6;
+    }
+    .img {
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 4;
+    }
+
+    section {
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 8;
+    }
+    .projects_head{
+        padding: 1%;
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 12;
+    }
+    .projects_head1{
+        padding: 1%;
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 6;
+    }
+    .title_spot{
+        padding: 1%;
+        background: lightgrey;
+        grid-row: 2;
+        grid-column: span 12;
+    }
+    .projects{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 12;
+        overflow: scroll;
+    }
+    .projects2{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 8;
+        overflow: scroll;
+    }
+    .projects1{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 3;
+        overflow: scroll;
+    }
+    .topnav {
+        background-color: #333;
+        overflow: hidden;
+    }
+    /*https://www.w3schools.com/howto/howto_js_topnav.asp
+    USED this for the navigation bar
+    */
+    /* Style the links inside the navigation bar */
+    .topnav a {
+        float: left;
+        color: gold;
+        text-align: center;
+        padding: 1% 1%;
+        text-decoration: none;
+        font-size: 100%;
+    }
+    a.education {
+        font-size: 70%;
+    }
+    a.header {
+        text-decoration: lightgrey;
+        color: black;
+    }
+    /* Change the color of links on hover */
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    .Title a{
+        text-decoration: lightgray;
+        color: black;
+        text-align: center;
+        padding: 1% 1%;
+        text-decoration: none;
+        font-size: 100%;
+    }
+    /* Add a color to the active/current link */
+    .topnav a.active {
+        background-color: gold;
+        color: black;
+    }
+    #github {
+        overflow-y: auto;
+    }
+    #github thead th {
+        position: sticky;
+        top: 0;
+    }
+    #github {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #github td, #github th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #github th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #333;
+        color: gold;
+    }
+    input, label {
+        float: left;
+        display: inline;
+    }
+}
