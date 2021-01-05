@@ -108,12 +108,12 @@
     <%end%>
 </footer>
   <div class = "footer1">
-    <%=form_tag({:action=> 'leave_game'},method: :post,name: 'leave_game', :remote=> true) do%>
+    <%=form_tag(cards_reset_card_path(commit: 'leave_game'),method: :post,name: 'leave_game', :remote=> true) do%>
       <div class="secondary btn pretty"><%= submit_tag 'Leave Game'%></div>
     <%end%>
   </div>
   <div class = "footer1">
-    <%=form_tag({:action=> 'reset_card'},method: :post,name: 'reset_card', :remote=> true) do%>
+    <%=form_tag(cards_reset_card_path(commit: 'reset_game'),method: :post,name: 'reset_game', :remote=> true) do%>
       <div class="secondary btn pretty"><%= submit_tag 'Reset Game'%></div>
     <%end%>
   </div>

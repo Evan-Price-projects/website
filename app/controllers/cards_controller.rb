@@ -48,6 +48,7 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
   def reset_card
+    if params[:commit].include? 'reset_game'
     @cards=Card.where(table_id: @current_user.table_id).where.not(status:0)
     @cards.find_each do |card|
       unless card.status == 0
@@ -58,8 +59,12 @@ class CardsController < ApplicationController
         end
       end
     end
-    flash[:warning] = "reset deck"
-    redirect_to cards_path
+      flash[:warning] = "reset deck"
+    else
+      flash[:warning] = "left game"
+      end
+    redirect_to tables_path
+
   end
   def recover_discard
     @cards=Card.where(status:5,table_id: @current_user.table_id)
