@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag 'application'  %>
 
-<h1>Create New Table</h1>
+<div class = "projects_head"><h1>Create New Table</h1></div>
+<div class = "projects">
 <% if flash[:notice] %>
   <div class="alert alert-danger">
     <div class="message" id="notice">
@@ -69,13 +70,24 @@
                { name: "KC", location: "deck", status: 1, cardFront: "&#127198", UserID: @current_user.id},
                { name: "RJ", location: "deck", status: 1, cardFront: "&#127167", UserID: @current_user.id},
                { name: "BJ", location: "deck", status: 1, cardFront: "&#127183", UserID: @current_user.id},]%>
+  <% grouped_options = [User.where(name: @current_user.name).first.id,User.where(name: @current_user.name).first.id] %>
+  <%grouped_options1 = [] %>
+  <%@tables = Table.all %>
+  <% if !@tables.first.nil? %>
+  <% @tables.each do |table|%>
+    <% grouped_options1<< table.UserNum %>
+  <% end %>
+    <% grouped_options1 = [grouped_options1.max+1,grouped_options1.max+1] %>
+  <%else %>
+    <% grouped_options1 = [1,1] %>
+  <%end %>
 
   <%= label :table, :UserID, 'UserID', :class => 'col-form-label' %>
-  <%= number_field(:table, :UserID, :class => 'form-control' )%>
+  <%= select :table, :UserID, grouped_options.each {|table| table}, {}, {:class => 'form-control col-1 tablenm'} %><br><br>
   <%= label :table, :UserNum, 'UserNum', :class => 'col-form-label' %>
-  <%= number_field(:table, :UserNum, :class => 'form-control' )%>
+  <%= select :table, :UserNum, grouped_options1.each {|table| table}, {}, {:class => 'form-control col-1 tablenm'} %><br><br>
   <%= label :table, :included, 'Cards to be exluded (for a normal deck check the two jokers at the bottom)', :class => 'col-form-label' %>
-  <table class="table table-striped col-md-12 table-condensed cf" id="cards">
+  <table id="github">
     <thead>
     <tr>
       <th>Card</th>
@@ -102,4 +114,4 @@
   <br/>
   <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
   <%= link_to 'Cancel', tables_path, :class => 'btn btn-secondary' %>
-<% end %>
+<% end %></div>

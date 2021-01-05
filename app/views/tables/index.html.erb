@@ -2,12 +2,13 @@
 
 <!--  This file is app/views/movies/index.html.erb -->
 <%if !@current_user%>
-  <h1>Welcome to Aces!</h1>
-  <h3>Please Login to begin.</h3>
-  <center><%= button_to "Sign up/Login", login_path, :id => 'signupLogin' ,:method => :get %></center>
+  <div class = "projects_head"><h3>Please Login to begin.</h3></div>
+  <div class = "projects">
+  <%= button_to "Sign up/Login", login_path, :id => 'signupLogin' ,:method => :get %></div>
 <%else %>
-<h1>All Games</h1>
-<table class="table table-striped col-md-12" id="movies">
+  <div class = "projects_head"><h1>All Games</h1></div>
+  <div class = "projects">
+<table id="github">
   <thead>
   <tr>
     <th>Table Name</th>
@@ -35,4 +36,4 @@
   <%=link_to 'Add new Game', new_table_path, :class => 'btn btn-primary' %>
 </table>
   <%= link_to "Choose Table", user_path(User.where(name: @current_user.name).first, @tables), :class => 'btn btn-primary' %>
-<%end %>
+<%end %></div>

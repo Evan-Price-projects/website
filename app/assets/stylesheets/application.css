@@ -61,6 +61,16 @@
         grid-row: 3;
         grid-column: span 12;
     }
+    .spacer{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 4;
+    }
+    .full3{
+        background: lightgrey;
+        grid-row: 3;
+        grid-column: span 8;
+    }
     footer{
         background: lightgrey;
         grid-row: 1;
