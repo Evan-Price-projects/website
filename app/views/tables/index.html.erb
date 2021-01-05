@@ -11,25 +11,22 @@
 <table id="github">
   <thead>
   <tr>
-    <th>Table Creator</th>
     <th>Table Number</th>
     <th>Enter Game</th>
     <th>Delete Table?</th>
   </tr>
   </thead>
   <tbody>
-  <%count = 0 %>
   <% @tables.each do |table| %>
     <tr>
       <td>
-        <%="#{User.find(table.UserID).name}"%>
+        <%="#{table.id}"%>
       </td>
       <td>
-        <%= "#{table.UserNum}"%>
-      </td>
-      <td>
+        <%if @current_user.table_id == table.id%>
           <%= form_tag cards_path, :id => "gameBoard", method: :get%>
-            <%=submit_tag "Enter Game",name: table.UserID %>
+            <%=submit_tag "Enter Game",name: table %>
+          <%end %>
       </td>
       <td>
         <%= link_to "Delete table", table_path(table), :class => 'btn btn-primary' %>

@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       session[:session_token] = temp
       puts(session[:session_token])
       self.set_current_user
-      puts("this is current user #{@current_user.name} session token #{@current_user.session_token} pass #{@current_user.password_digest}")
+      puts("this is current user #{@current_user.name} session token #{@current_user.session_token} pass #{@current_user.password_digest} table_id #{@current_user.table_id}")
       redirect_to tables_path
     else
       flash[:notice] = "Sorry. Incorrect Name or Password"
