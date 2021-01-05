@@ -5,7 +5,7 @@ class CreateCards < ActiveRecord::Migration[6.0]
       t.string :location
       t.integer :status
       t.string :cardFront
-      t.integer :UserID
+      t.integer :table_id
       t.timestamps
     end
   end

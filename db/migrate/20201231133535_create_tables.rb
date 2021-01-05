@@ -4,8 +4,7 @@ class CreateTables < ActiveRecord::Migration[6.0]
       t.timestamps
       t.references 'card'
       t.references 'user'
-      t.integer :UserNum
-      t.integer :UserID
+      t.integer :Table_id
     end
   end
 end

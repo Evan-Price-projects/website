@@ -11,7 +11,8 @@
 <table id="github">
   <thead>
   <tr>
-    <th>Table Name</th>
+    <th>Table Creator</th>
+    <th>Table Number</th>
     <th>Enter Game</th>
     <th>Delete Table?</th>
   </tr>
@@ -21,7 +22,10 @@
   <% @tables.each do |table| %>
     <tr>
       <td>
-        <%="#{User.find(table.UserID).name} created table"%>
+        <%="#{User.find(table.UserID).name}"%>
+      </td>
+      <td>
+        <%= "#{table.UserNum}"%>
       </td>
       <td>
           <%= form_tag cards_path, :id => "gameBoard", method: :get%>
