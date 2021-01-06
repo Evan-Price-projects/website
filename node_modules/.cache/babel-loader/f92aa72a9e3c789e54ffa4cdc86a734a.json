@@ -1,0 +1,1 @@
+{"ast":null,"code":"\"use strict\";\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nfunction isServerRenderResult(testValue) {\n  return !!(testValue.renderedHtml || testValue.redirectLocation || testValue.routeError || testValue.error);\n}\n\nexports[\"default\"] = isServerRenderResult;","map":null,"metadata":{},"sourceType":"module"}
