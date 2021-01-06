@@ -34,26 +34,28 @@
 <div class = "projects1">
     <h4><%="#{@current_user.name}'s Hand"%></h4>
     <% z = @cards.where(table_id: @current_user.table_id).sort %>
-    <% z.each do |card| %>
+  <div class = "big">
+  <% z.each do |card| %>
       <% if card.location == @current_user.name and card.status ==2%>
-        <div class = "big"><%=link_to "#{card.cardFront}".html_safe, cards_play_card_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
-        </div><%end%>
-    <%end%>
+        <%=link_to "#{card.cardFront}".html_safe, cards_play_card_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
+        <%end%>
+    <%end%></div>
   <h4><%="#{@current_user.name}'s Action Area"%></h4>
-  <% @cards.each do |card| %>
+  <div class = "big"><% @cards.each do |card| %>
     <% if card.location == @current_user.name and card.status ==3%>
-      <div class = "big"><%=link_to "#{card.cardFront}".html_safe, cards_play_card_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
-      </div><%end%>
-  <%end%>
+      <%=link_to "#{card.cardFront}".html_safe, cards_play_card_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
+      <%end%>
+    <%end%></div>
 </div>
 <div class = "projects1">
     <h5><%="#{@current_user.name}'s In Play Hand"%></h5>
     <%z = @cards.where(location: @current_user.name, status: 4, table_id: @current_user.table_id).sort %>
-    <% z.each do |card| %>
+  <div class="big">
+  <% z.each do |card| %>
       <% if card.location == @current_user.name and card.status ==4%>
-        <div class="big"><%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
-        </div><% end %>
-    <% end %>
+        <%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
+        <% end %>
+    <% end %></div>
   <%x = Card.where(status: 4, table_id: @current_user.table_id)%>
   <%x=x.where.not(location: @current_user.name) %>
   <%a = x.uniq.pluck(:location)%>
@@ -61,9 +63,10 @@
     <%h = x.where(location: 'Dealer') %>
     <h5>Dealer</h5>
   <%end %>
+  <div class = "big">
   <%h.each do |card| %>
-      <div class = "big"><%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
-      </div><% end %>
+      <%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
+    <% end %></div>
   </div>
 <div class = "projects1">
   <h5>Opponent's in Play Hand</h5>
@@ -82,9 +85,10 @@
   <%h.each do |key, value| %>
     <h4><%="#{key}" %></h4>
     <%value.sort %>
+    <div class = "big1">
     <% value.each do |card| %>
-      <div class = "big1"><%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
-      </div><% end %>
+      <%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
+      <% end %></div>
   <%end %>
 </div>
 </div>
