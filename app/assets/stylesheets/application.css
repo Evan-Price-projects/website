@@ -129,14 +129,6 @@
         grid-column: span 3;
         overflow: scroll;
     }
-    .big{
-        font-size: 250%;
-        display: inline;
-    }
-    .big1{
-        font-size: 150%;
-        display: inline;
-    }
     .topnav {
         background-color: #333;
         overflow: hidden;
@@ -207,7 +199,12 @@
         float: left;
         display: inline;
     }
-    div .big1 .big{
+    div .big{
+        font-size: 250%;
+        display: inline;
+    }
+    div .big1{
+        font-size: 150%;
         display: inline;
     }
 }
