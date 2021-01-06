@@ -75,8 +75,8 @@
     .projects1{
         background: lightgrey;
         grid-row: 3;
-        font-size: 200%;
         grid-column: span 3;
+        font-size: 200%;
         overflow: scroll;
     }
     .projects2{
