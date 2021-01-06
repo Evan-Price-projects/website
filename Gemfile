@@ -7,7 +7,7 @@ gem "activesupport", "6.0.3.3"
 gem "json", ">= 2.3.0"
 
 gem 'react-rails', '2.6.1'
-
+gem 'webpacker', '~> 5.2', '>= 5.2.1'
 gem "actionview", "6.0.3.3"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', "6.0.3.3"
@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 5.0.0'
 gem 'railties', '6.0.3.3'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'io-console', '~> 0.5'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
