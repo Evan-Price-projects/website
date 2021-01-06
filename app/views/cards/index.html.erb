@@ -61,9 +61,11 @@
     <%h = x.where(location: 'Dealer') %>
     <h6>Dealer</h6>
   <%end %>
+  <%if !h.nil? %>
   <%h.each do |card| %>
       <%=link_to "#{card.cardFront}".html_safe, cards_take_from_board_path(:commit => "#{card.cardFront}".html_safe), method: :post %>
     <% end %>
+    <%end %>
   </div>
 <div class = "projects3">
   <h6>Opponent's in Play Hand</h6>
