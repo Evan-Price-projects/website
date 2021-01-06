@@ -13,7 +13,10 @@
         font-size: 100%;
     }
     h5{
-        font-size: 80%
+        font-size: 80%;
+    }
+    h6{
+        font-size: 50%;
     }
     body {
         background: grey;
@@ -126,9 +129,18 @@
     .projects1{
         background: lightgrey;
         grid-row: 3;
+        font-size: 250%;
         grid-column: span 3;
         overflow: scroll;
     }
+    .projects3{
+        background: lightgrey;
+        grid-row: 3;
+        font-size: 200%;
+        grid-column: span 3;
+        overflow: scroll;
+    }
+
     .topnav {
         background-color: #333;
         overflow: hidden;
