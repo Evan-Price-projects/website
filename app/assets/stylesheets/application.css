@@ -127,11 +127,11 @@
         overflow: scroll;
     }
     .projects1{
+        font-size: 200%;
         background: lightgrey;
         grid-row: 3;
         grid-column: span 3;
         overflow: scroll;
-        font-size: 200%;
     }
     .topnav {
         background-color: #333;
