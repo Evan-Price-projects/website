@@ -207,4 +207,7 @@
         float: left;
         display: inline;
     }
+    div .big1 .big{
+        display: inline;
+    }
 }
