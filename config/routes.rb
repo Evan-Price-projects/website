@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :descriptions, :cards, :users, :sessions, :tables
+  resources :descriptions, :cards, :users, :sessions, :tables, :apps
   root 'descriptions#index'
   get 'descriptions/experience'
   get 'descriptions/education'

@@ -17,6 +17,5 @@ Bundler.require(*Rails.groups)
 
 module Website
   class Application < Rails::Application
-    config.react.server_renderer_extensions = ["jsx", "js", "tsx", "ts"]
   end
 end

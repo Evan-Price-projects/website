@@ -6,13 +6,16 @@
     <dt>
   <h3>
       Useful Resources
-      <%= react_component("HelloWorld", { greeting: "Hello from react-rails." }) %>
   </h3>
     </dt>
   <h5>
     <dd><a href="https://github.com/Evan-Price-projects/website" target="_blank">Link to this Repository</a></dd>
     <dd><a href="https://github.com/Evan-Price-projects/" target="_blank">GitHub Homepage</a></dd>
     <dd><a href="https://www.linkedin.com/in/evan-price-57784385/" target="_blank">LinkedIn Homepage</a></dd>
+    <dd><%= react_component("Search") %></dd>
+    <dd><%= render partial: "apps/app_cards", locals: { name: "Most Downloaded", app_list: @most_downloaded } %>
+    </dd>
+    <dd><%= render partial: "apps/app_cards", locals: { name: "Highest Rated", app_list: @highest_rated } %></dd>
   </h5>
   </dl>
 </section>
