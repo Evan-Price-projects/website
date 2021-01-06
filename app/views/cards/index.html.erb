@@ -28,10 +28,9 @@
 <div class = "projects1">
   <h6>Draw</h6>
   &#128104 <%=link_to "&#127136".html_safe, cards_draw_card_path(commit: "Draw"), method: :post %>
-
   <h6>Draw For Dealer</h6>
   <%=link_to "&#127136".html_safe, cards_draw_card_path(commit: "Deal"), method: :post %>
-  </div>
+</div>
 <div class = "projects1">
     <h6><%="#{@current_user.name}'s Hand"%></h6>
     <% z = @cards.where(table_id: @current_user.table_id).sort %>
