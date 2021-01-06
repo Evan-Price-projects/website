@@ -6,6 +6,8 @@ gem "activesupport", "6.0.3.3"
 
 gem "json", ">= 2.3.0"
 
+gem 'react-rails', '2.6.1'
+
 gem "actionview", "6.0.3.3"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', "6.0.3.3"
