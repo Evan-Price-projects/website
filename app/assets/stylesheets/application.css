@@ -133,13 +133,6 @@
         grid-column: span 3;
         overflow: scroll;
     }
-    .projects3{
-        background: lightgrey;
-        grid-row: 3;
-        font-size: 200%;
-        grid-column: span 3;
-        overflow: scroll;
-    }
 
     .topnav {
         background-color: #333;

@@ -67,7 +67,7 @@
     <% end %>
     <%end %>
   </div>
-<div class = "projects3">
+<div class = "projects1">
   <h6>Opponent's in Play Hand</h6>
   <%x = Card.where(status: 4, table_id: @current_user.table_id)%>
   <%x=x.where.not(location: @current_user.name) %>
