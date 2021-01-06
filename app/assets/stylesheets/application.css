@@ -15,9 +15,6 @@
     h5{
         font-size: 80%
     }
-    h6{
-        font-size: 50%;
-    }
     body {
         background: grey;
     }
@@ -127,11 +124,18 @@
         overflow: scroll;
     }
     .projects1{
-        font-size: 200%;
         background: lightgrey;
         grid-row: 3;
         grid-column: span 3;
         overflow: scroll;
+    }
+    .big{
+        font-size: 250%;
+        display: inline;
+    }
+    .big1{
+        font-size: 150%;
+        display: inline;
     }
     .topnav {
         background-color: #333;
